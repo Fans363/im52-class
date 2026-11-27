@@ -7013,6 +7013,35 @@ body.menu-open .mobile-menu {
   background: #f3f7f2;
 }
 
+.repo-mini-btn--danger {
+  border-color: #d8b9ad;
+  background: #fff8f5;
+  color: #9a4d37;
+}
+
+.repo-mini-btn--danger .icon {
+  color: #b25a42;
+}
+
+.repo-mini-btn--danger:hover {
+  border-color: #b25a42;
+  background: #fbece6;
+}
+
+.doc-action-btn--danger {
+  border-color: #e2c7bd;
+  color: #9a4d37;
+}
+
+.doc-action-btn--danger .icon {
+  color: #b25a42;
+}
+
+.doc-action-btn--danger:hover {
+  border-color: #b25a42;
+  background: #fbece6;
+}
+
 .repo-mini-btn--primary {
   border-color: #2f5e53;
   background: #2f5e53;
@@ -7048,6 +7077,47 @@ body.menu-open .mobile-menu {
   color: #8a948d;
   font-size: 8.5px;
   line-height: 1.6;
+}
+
+.repo-hidden-list {
+  max-height: 300px;
+  overflow: auto;
+  margin-top: 12px;
+  border: 1px solid #e7e2d7;
+  border-radius: 7px;
+}
+
+.repo-hidden-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 11px;
+  border-bottom: 1px solid #efebe2;
+  font-size: 9.5px;
+}
+
+.repo-hidden-row:last-child {
+  border-bottom: 0;
+}
+
+.repo-hidden-row > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+  color: #4d5b54;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.repo-hidden-row .icon {
+  color: #b08a45;
+  font-size: 12px;
+  flex: 0 0 auto;
 }
 
 /* ---------- uploaded document view inside repo ---------- */
@@ -9029,6 +9099,7 @@ a.doc-action-btn {
     <div class="noscript">这个页面需要启用 JavaScript 才能浏览班级文档、班级纪实、科创实践与成员名录。</div>
   </noscript>
 
+  
   <script>
 /* =========================================================
    机械系智造52班 · 班级主页内容数据
@@ -11662,6 +11733,21 @@ window.CLASS_SITE_DATA.cloudResources = {
       .join("/");
   }
 
+  function hiddenRepoPaths() {
+    return (state.repoFolders || [])
+      .filter((item) => item.hidden)
+      .map((item) => normalizeRepoPath(item.path || item))
+      .filter(Boolean);
+  }
+
+  function isRepoPathHidden(path) {
+    const normalized = normalizeRepoPath(path);
+    if (!normalized) return false;
+    return hiddenRepoPaths().some(
+      (hidden) => normalized === hidden || normalized.startsWith(`${hidden}/`)
+    );
+  }
+
   function uploadedRepoDocs() {
     return documentMediaItems().map((item) => ({
       id: `uploaded-${item.id}`,
@@ -11714,7 +11800,9 @@ window.CLASS_SITE_DATA.cloudResources = {
   }
 
   function allRepoDocs() {
-    return [...DATA.resources, ...uploadedRepoDocs(), ...cloudRepoDocs()];
+    return [...DATA.resources, ...uploadedRepoDocs(), ...cloudRepoDocs()].filter(
+      (doc) => !isRepoPathHidden(doc.folder || doc.course || "")
+    );
   }
 
   function buildRepoFS() {
@@ -11744,7 +11832,9 @@ window.CLASS_SITE_DATA.cloudResources = {
       folder.children.push({ type: "file", name: doc.file, path: `${folder.path}/${doc.file}`.replace(/^\//, ""), doc });
     });
 
-    (state.repoFolders || []).forEach((folder) => ensureFolder(folder.path || folder));
+    (state.repoFolders || [])
+      .filter((folder) => !folder.hidden)
+      .forEach((folder) => ensureFolder(folder.path || folder));
 
     function sortFolder(folder) {
       folder.children.sort((a, b) => {
@@ -11948,12 +12038,26 @@ window.CLASS_SITE_DATA.cloudResources = {
     `;
   }
 
+  function isCustomRepoFolder(path) {
+    const normalized = normalizeRepoPath(path);
+    if (!normalized) return false;
+    return (state.repoFolders || []).some((item) => normalizeRepoPath(item.path || item) === normalized);
+  }
+
   function repoExplorerToolbar(path) {
     const display = path ? `/${path}` : "/";
     return `
       <div class="repo-explorer-toolbar">
         <span class="repo-current-path"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>${escapeHTML(display)}</span>
         <div class="repo-explorer-actions">
+          ${path ? `
+            <button class="repo-mini-btn repo-mini-btn--danger" type="button" data-repo-delete-folder="${escapeHTML(path)}">
+              <svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg>删除目录
+            </button>` : ""}
+          ${hiddenRepoPaths().length ? `
+            <button class="repo-mini-btn" type="button" data-repo-restore-hidden>
+              <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>恢复隐藏
+            </button>` : ""}
           <button class="repo-mini-btn" type="button" data-repo-new-folder>
             <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>新建目录
           </button>
@@ -12063,6 +12167,9 @@ window.CLASS_SITE_DATA.cloudResources = {
           <a class="doc-action-btn doc-action-btn--edit" href="${url}" download="${escapeHTML(doc.file)}">
             <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>下载
           </a>
+          <button class="doc-action-btn doc-action-btn--danger" type="button" data-uploaded-delete="${escapeHTML(doc.mediaId)}">
+            <svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg>删除文件
+          </button>
         </div>
       </div>
       <div class="uploaded-file-preview">
@@ -12611,6 +12718,181 @@ window.CLASS_SITE_DATA.cloudResources = {
     });
   }
 
+  async function openDeleteRepoFolder(path) {
+    const normalized = normalizeRepoPath(path);
+    if (!normalized) {
+      showToast("不能删除根目录");
+      return;
+    }
+
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = () => openDeleteRepoFolder(normalized);
+      openSharedLogin();
+      return;
+    }
+
+    const folder = findRepoFolder(normalized);
+    if (!folder) {
+      showToast("目录不存在");
+      return;
+    }
+
+    const custom = isCustomRepoFolder(normalized);
+    const empty = folder.children.length === 0;
+    const physicalDelete = custom && empty;
+
+    const message = physicalDelete
+      ? `确定删除空目录「${folder.name}」吗？`
+      : `「${folder.name}」里有内容，或来自课程/云盘。\n\n删除后会从网页隐藏整个目录，但不会删除原始文档或云盘文件。确定继续吗？`;
+    if (!window.confirm(message)) return;
+
+    try {
+      if (sharedState.mode) {
+        const response = await fetch("/api/folders", {
+          method: physicalDelete ? "DELETE" : "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(physicalDelete ? { path: normalized } : { path: normalized, hidden: true })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          sharedState.authenticated = false;
+          throw new Error("登录已过期，请重新登录");
+        }
+        if (!response.ok) throw new Error(payload.error || "删除目录失败");
+      }
+
+      if (physicalDelete) {
+        state.repoFolders = state.repoFolders.filter(
+          (item) => normalizeRepoPath(item.path || item) !== normalized
+        );
+      } else {
+        const existing = state.repoFolders.find(
+          (item) => normalizeRepoPath(item.path || item) === normalized
+        );
+        if (existing) {
+          existing.hidden = true;
+        } else {
+          state.repoFolders.push({ path: normalized, hidden: true, createdAt: new Date().toISOString() });
+        }
+      }
+      if (!sharedState.mode) saveLocalRepoFolders();
+
+      state.repoPath = normalized.includes("/") ? normalized.slice(0, normalized.lastIndexOf("/")) : "";
+      state.repoView = "folder";
+      state.repoDocId = "";
+      state.repoQuery = "";
+      setRepoSearch("");
+      renderRepo();
+      showToast(physicalDelete ? "目录已删除" : "目录已从网页隐藏，可点「恢复隐藏」找回");
+    } catch (error) {
+      showToast(error.message || "删除目录失败");
+    }
+  }
+
+  function openRestoreHidden() {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = openRestoreHidden;
+      openSharedLogin();
+      return;
+    }
+
+    const hidden = hiddenRepoPaths();
+    if (hidden.length === 0) {
+      showToast("没有隐藏的目录");
+      return;
+    }
+
+    openModal(`
+      <div class="repo-folder-modal">
+        <p class="modal-kicker">im52-study-hub · 已隐藏目录</p>
+        <h2 id="modalTitle">恢复隐藏目录</h2>
+        <p class="repo-folder-location">删除的内置课程、云盘目录会出现在这里。</p>
+        <div class="repo-hidden-list">
+          ${hidden.map((path) => `
+            <div class="repo-hidden-row">
+              <span><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>/${escapeHTML(path)}</span>
+              <button class="repo-mini-btn" type="button" data-restore-hidden="${escapeHTML(path)}">恢复</button>
+            </div>
+          `).join("")}
+        </div>
+        <div class="modal-footer">
+          <p class="modal-footer-note">恢复后目录和其中的文件会重新出现。</p>
+          <div class="editor-foot-actions">
+            <button class="editor-btn" type="button" data-close-modal>关闭</button>
+          </div>
+        </div>
+      </div>
+    `);
+  }
+
+  async function restoreHiddenRepoFolder(path) {
+    const normalized = normalizeRepoPath(path);
+    if (!normalized) return;
+
+    try {
+      if (sharedState.mode) {
+        const response = await fetch("/api/folders", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: normalized })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          sharedState.authenticated = false;
+          throw new Error("登录已过期，请重新登录");
+        }
+        if (!response.ok && response.status !== 404) throw new Error(payload.error || "恢复失败");
+      }
+      state.repoFolders = state.repoFolders.filter(
+        (item) => normalizeRepoPath(item.path || item) !== normalized
+      );
+      if (!sharedState.mode) saveLocalRepoFolders();
+      closeModal();
+      state.repoView = "folder";
+      state.repoPath = normalized;
+      state.repoDocId = "";
+      renderRepo();
+      showToast("目录已恢复");
+    } catch (error) {
+      showToast(error.message || "恢复失败");
+    }
+  }
+
+  async function deleteRepoUploadedFile(mediaId) {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = () => deleteRepoUploadedFile(mediaId);
+      openSharedLogin();
+      return;
+    }
+    if (!window.confirm("确定删除这个上传文件吗？")) return;
+
+    const doc = allRepoDocs().find((item) => item.mediaId === mediaId);
+    const folderPath = doc ? doc.folder : state.repoPath;
+
+    try {
+      if (sharedState.mode) {
+        const response = await fetch(`/api/media/${encodeURIComponent(mediaId)}`, { method: "DELETE" });
+        const payload = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          sharedState.authenticated = false;
+          throw new Error("登录已过期，请重新登录");
+        }
+        if (!response.ok) throw new Error(payload.error || "删除文件失败");
+      } else {
+        await deleteStoredMedia(mediaId);
+      }
+
+      state.repoView = "folder";
+      state.repoPath = folderPath || "";
+      state.repoDocId = "";
+      await loadMediaGallery();
+      renderRepo();
+      showToast("文件已删除");
+    } catch (error) {
+      showToast(error.message || "删除文件失败");
+    }
+  }
+
   function openRepoUploader(folderPath = "") {
     if (sharedState.mode && !sharedState.authenticated) {
       sharedState.pendingAction = () => openRepoUploader(folderPath);
@@ -12814,6 +13096,29 @@ window.CLASS_SITE_DATA.cloudResources = {
           return;
         }
 
+        if (event.target.closest("[data-repo-restore-hidden]")) {
+          openRestoreHidden();
+          return;
+        }
+
+        const restoreButton = event.target.closest("[data-restore-hidden]");
+        if (restoreButton) {
+          restoreHiddenRepoFolder(restoreButton.dataset.restoreHidden);
+          return;
+        }
+
+        const deleteFolderButton = event.target.closest("[data-repo-delete-folder]");
+        if (deleteFolderButton) {
+          openDeleteRepoFolder(deleteFolderButton.dataset.repoDeleteFolder);
+          return;
+        }
+
+        const deleteUploadedButton = event.target.closest("[data-uploaded-delete]");
+        if (deleteUploadedButton) {
+          deleteRepoUploadedFile(deleteUploadedButton.dataset.uploadedDelete);
+          return;
+        }
+
         if (event.target.closest("[data-repo-new-folder]")) {
           openNewRepoFolder();
           return;
@@ -12858,6 +13163,14 @@ window.CLASS_SITE_DATA.cloudResources = {
         }
       });
     }
+
+    document.addEventListener("click", (event) => {
+      const restoreButton = event.target.closest("[data-restore-hidden]");
+      if (restoreButton) {
+        event.preventDefault();
+        restoreHiddenRepoFolder(restoreButton.dataset.restoreHidden);
+      }
+    });
 
     const guideButton = $("#repoGuideBtn");
     if (guideButton) {
@@ -15148,5 +15461,6 @@ window.CLASS_SITE_DATA.cloudResources = {
 })();
 
 </script>
+
 </body>
 </html>

@@ -6946,6 +6946,77 @@ body.menu-open .mobile-menu {
   }
 }
 
+/* ---------- uploaded document view inside repo ---------- */
+
+a.doc-action-btn {
+  text-decoration: none;
+}
+
+.uploaded-file-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 22px 0 14px;
+  padding: 38px 24px;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(226, 180, 91, 0.12), transparent 28%),
+    #faf7ef;
+  text-align: center;
+}
+
+.uploaded-file-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 90px;
+  margin-bottom: 4px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper-light);
+  color: var(--ink);
+  box-shadow: 0 10px 24px -18px rgba(13, 43, 36, 0.45);
+}
+
+.uploaded-file-badge > span {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.uploaded-file-badge .icon {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 15px;
+  height: 15px;
+  color: var(--gold-deep);
+}
+
+.uploaded-file-preview h3 {
+  max-width: 620px;
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.uploaded-file-preview p {
+  max-width: 560px;
+  color: var(--ink-muted);
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+.uploaded-file-preview .button {
+  margin-top: 5px;
+  min-height: 37px;
+  font-size: 10px;
+}
+
 /* ---------- learning document contributions ---------- */
 
 .repo-btn--upload {
@@ -7375,6 +7446,301 @@ body.menu-open .mobile-menu {
 @media (max-width: 380px) {
   .event-media-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Tsinghua cloud archive ---------- */
+
+.cloud-library {
+  margin-top: 24px;
+  padding: 23px 24px 19px;
+  border: 1px solid var(--line-soft);
+  border-radius: 17px;
+  background:
+    radial-gradient(circle at 95% 5%, rgba(226, 180, 91, 0.13), transparent 25%),
+    #faf7ef;
+}
+
+.cloud-library-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.cloud-library-eyebrow {
+  color: var(--gold-deep);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+.cloud-library-head h3 {
+  margin-top: 4px;
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.cloud-library-head p:last-child {
+  max-width: 700px;
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 10.5px;
+  line-height: 1.75;
+}
+
+.cloud-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-size: 9px;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cloud-source-link .icon {
+  font-size: 11px;
+  color: var(--gold-deep);
+}
+
+.cloud-source-link:hover {
+  border-color: var(--ink-soft);
+  color: var(--ink);
+}
+
+.cloud-library-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 2px 5px;
+  color: var(--ink-muted);
+  font-size: 8.5px;
+}
+
+.cloud-library-meta span + span::before {
+  content: "·";
+  margin-right: 16px;
+  color: var(--line);
+}
+
+.cloud-category,
+.cloud-course {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.cloud-category:last-child,
+.cloud-course:last-child {
+  border-bottom: 0;
+}
+
+.cloud-category > summary,
+.cloud-course > summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 4px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.cloud-category > summary::-webkit-details-marker,
+.cloud-course > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cloud-category > summary::before,
+.cloud-course > summary::before {
+  content: "›";
+  display: inline-block;
+  width: 13px;
+  flex: 0 0 auto;
+  color: var(--gold-deep);
+  font-size: 15px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.cloud-category[open] > summary::before,
+.cloud-course[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.cloud-category > summary {
+  padding-top: 13px;
+  padding-bottom: 10px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.cloud-course > summary {
+  padding-left: 16px;
+  font-size: 10px;
+}
+
+.cloud-category > summary small,
+.cloud-course > summary small {
+  margin-left: auto;
+  color: var(--ink-muted);
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.cloud-course-list {
+  padding-left: 14px;
+}
+
+.cloud-file-list {
+  padding: 0 0 5px 15px;
+}
+
+.cloud-file-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 62px 34px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 4px;
+  border-top: 1px solid rgba(23, 58, 49, 0.06);
+  transition: background 0.18s ease;
+}
+
+.cloud-file-row:hover {
+  background: rgba(23, 58, 49, 0.04);
+}
+
+.cloud-file-ext {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 31px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  background: #eee5d4;
+  color: var(--ink-soft);
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cloud-file-main {
+  min-width: 0;
+}
+
+.cloud-file-main strong {
+  display: block;
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cloud-file-main small {
+  display: block;
+  overflow: hidden;
+  margin-top: 1px;
+  color: var(--ink-muted);
+  font-size: 7px;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cloud-file-main:hover strong {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cloud-file-size {
+  color: var(--ink-muted);
+  font-size: 7.5px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cloud-file-download {
+  color: var(--gold-deep);
+  font-size: 8px;
+  text-align: right;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cloud-file-download:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 760px) {
+  .cloud-library {
+    margin-top: 18px;
+    padding: 18px 15px 14px;
+  }
+
+  .cloud-library-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .cloud-library-head h3 {
+    font-size: 23px;
+  }
+
+  .cloud-source-link {
+    align-self: flex-end;
+  }
+
+  .cloud-library-meta {
+    flex-wrap: wrap;
+    gap: 5px 10px;
+  }
+
+  .cloud-library-meta span + span::before {
+    margin-right: 10px;
+  }
+
+  .cloud-course-list {
+    padding-left: 7px;
+  }
+
+  .cloud-file-list {
+    padding-left: 8px;
+  }
+
+  .cloud-file-row {
+    grid-template-columns: 29px minmax(0, 1fr) 33px;
+    gap: 7px;
+  }
+
+  .cloud-file-size {
+    display: none;
+  }
+
+  .cloud-file-ext {
+    width: 25px;
+    height: 29px;
+    font-size: 6px;
+  }
+
+  .cloud-file-main strong {
+    font-size: 9px;
   }
 }
 
@@ -8267,7 +8633,7 @@ body.menu-open .mobile-menu {
               <svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg>
               文档库
             </button>
-            <span class="repo-tab-note">Markdown · 可下载 · 支持站内编辑</span>
+            <span class="repo-tab-note">Markdown + 同学上传 · 可下载 · 支持站内编辑</span>
           </div>
           <div class="repo-body">
             <aside class="repo-sidebar" aria-label="课程目录">
@@ -8283,38 +8649,35 @@ body.menu-open .mobile-menu {
               <nav class="repo-tree" id="repoTree"></nav>
               <p class="repo-sidebar-note">
                 <svg class="icon" aria-hidden="true"><use href="#icon-pencil"></use></svg>
-                每一份文档都可以打开后编辑
+                Markdown 可编辑，上传文件可查看下载
               </p>
             </aside>
             <div class="repo-content" id="repoContent" aria-live="polite"></div>
           </div>
         </div>
 
-        <section class="uploaded-docs" id="docUploads" data-reveal>
-          <div class="uploaded-docs-head">
+        <section class="cloud-library" id="cloudLibrary" data-reveal hidden>
+          <div class="cloud-library-head">
             <div>
-              <p class="uploaded-docs-eyebrow">CLASS CONTRIBUTIONS</p>
-              <h3>同学上传的资料</h3>
-              <p>把自己找到的 PDF、PPT、Word、笔记或复习资料放进来，其他同学可以直接查看和下载。</p>
+              <p class="cloud-library-eyebrow">TSINGHUA CLOUD · CLASS ARCHIVE</p>
+              <h3>云盘资料库</h3>
+              <p>从班级共享云盘整理的课程文件，按课程归档。文件仍保存在原云盘，打开后会进入云盘预览或下载页。</p>
             </div>
-            <div class="uploaded-docs-actions">
-              <span id="docUploadCount">0 份资料</span>
-              <button class="uploaded-docs-upload" type="button" data-upload-doc>
-                <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
-                上传资料
-              </button>
-            </div>
+            <a class="cloud-source-link" id="cloudSourceLink" href="#" target="_blank" rel="noopener">
+              打开原云盘
+              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
+            </a>
           </div>
-          <div class="uploaded-doc-list" id="docUploadList"></div>
-          <div class="uploaded-doc-empty" id="docUploadEmpty">
-            <svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>
-            <p>还没有同学上传资料，成为第一个贡献者吧。</p>
+          <div class="cloud-library-meta">
+            <span id="cloudFileCount">0 份文件</span>
+            <span id="cloudSyncTime"></span>
           </div>
+          <div class="cloud-library-body" id="cloudLibraryBody"></div>
         </section>
 
         <p class="section-note" data-reveal>
           <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
-          文档由本班同学整理与维护，仅供班级内部学习交流使用。
+          文档由本班同学整理与维护，仅供班级内部学习交流使用；云盘文件版权归原作者或课程教师所有。
         </p>
       </div>
     </section>
@@ -9958,6 +10321,184 @@ F = 3n - 2PL - PH
 
 </script>
   <script>
+window.CLASS_SITE_DATA.cloudResources = {
+  "source": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/",
+  "syncedAt": "2026-11-27",
+  "totalFiles": 23,
+  "categories": [
+    {
+      "name": "大二必限课程",
+      "count": 23,
+      "groups": [
+        {
+          "name": "大学物理B（2）",
+          "count": 3,
+          "files": [
+            {
+              "path": "/大二必限课程/大学物理B（2）/大学物理学习题讨论课指导（第2版 上）.pdf",
+              "name": "大学物理学习题讨论课指导（第2版 上）.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86B%EF%BC%882%EF%BC%89%2F%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E9%A2%98%E8%AE%A8%E8%AE%BA%E8%AF%BE%E6%8C%87%E5%AF%BC%EF%BC%88%E7%AC%AC2%E7%89%88%20%E4%B8%8A%EF%BC%89.pdf",
+              "size": "63.2 MB"
+            },
+            {
+              "path": "/大二必限课程/大学物理B（2）/大学物理学习题讨论课指导（第2版 下）.pdf",
+              "name": "大学物理学习题讨论课指导（第2版 下）.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86B%EF%BC%882%EF%BC%89%2F%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E9%A2%98%E8%AE%A8%E8%AE%BA%E8%AF%BE%E6%8C%87%E5%AF%BC%EF%BC%88%E7%AC%AC2%E7%89%88%20%E4%B8%8B%EF%BC%89.pdf",
+              "size": "59.8 MB"
+            },
+            {
+              "path": "/大二必限课程/大学物理B（2）/助教网习题.pdf",
+              "name": "助教网习题.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86B%EF%BC%882%EF%BC%89%2F%E5%8A%A9%E6%95%99%E7%BD%91%E4%B9%A0%E9%A2%98.pdf",
+              "size": "27.3 MB"
+            }
+          ]
+        },
+        {
+          "name": "电工技术与电子技术（1）",
+          "count": 4,
+          "files": [
+            {
+              "path": "/大二必限课程/电工技术与电子技术（1）/2020年秋电工技术与电子技术B卷.pdf",
+              "name": "2020年秋电工技术与电子技术B卷.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%EF%BC%881%EF%BC%89%2F2020%E5%B9%B4%E7%A7%8B%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AFB%E5%8D%B7.pdf",
+              "size": "230.4 KB"
+            },
+            {
+              "path": "/大二必限课程/电工技术与电子技术（1）/2020年秋电工技术与电子技术B卷答案-B.pdf",
+              "name": "2020年秋电工技术与电子技术B卷答案-B.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%EF%BC%881%EF%BC%89%2F2020%E5%B9%B4%E7%A7%8B%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AFB%E5%8D%B7%E7%AD%94%E6%A1%88-B.pdf",
+              "size": "437.9 KB"
+            },
+            {
+              "path": "/大二必限课程/电工技术与电子技术（1）/2022秋电工技术与电子技术1A卷_参考解答.pdf",
+              "name": "2022秋电工技术与电子技术1A卷_参考解答.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%EF%BC%881%EF%BC%89%2F2022%E7%A7%8B%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF1A%E5%8D%B7_%E5%8F%82%E8%80%83%E8%A7%A3%E7%AD%94.pdf",
+              "size": "381.5 KB"
+            },
+            {
+              "path": "/大二必限课程/电工技术与电子技术（1）/2022秋电工技术与电子技术1A卷(1).pdf",
+              "name": "2022秋电工技术与电子技术1A卷(1).pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%EF%BC%881%EF%BC%89%2F2022%E7%A7%8B%E7%94%B5%E5%B7%A5%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF1A%E5%8D%B7(1).pdf",
+              "size": "337.4 KB"
+            }
+          ]
+        },
+        {
+          "name": "概率论与数理统计",
+          "count": 7,
+          "files": [
+            {
+              "path": "/大二必限课程/概率论与数理统计/★概率统计试题201901A.pdf",
+              "name": "★概率统计试题201901A.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F%E2%98%85%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E8%AF%95%E9%A2%98201901A.pdf",
+              "size": "685.3 KB"
+            },
+            {
+              "path": "/大二必限课程/概率论与数理统计/★概率统计试题201901参考解答.pdf",
+              "name": "★概率统计试题201901参考解答.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F%E2%98%85%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E8%AF%95%E9%A2%98201901%E5%8F%82%E8%80%83%E8%A7%A3%E7%AD%94.pdf",
+              "size": "832.4 KB"
+            },
+            {
+              "path": "/大二必限课程/概率论与数理统计/2009-2010秋季学期概率统计参考答案.pdf",
+              "name": "2009-2010秋季学期概率统计参考答案.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F2009-2010%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf",
+              "size": "243.4 KB"
+            },
+            {
+              "path": "/大二必限课程/概率论与数理统计/2021概率论期末题目.pdf",
+              "name": "2021概率论期末题目.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F2021%E6%A6%82%E7%8E%87%E8%AE%BA%E6%9C%9F%E6%9C%AB%E9%A2%98%E7%9B%AE.pdf",
+              "size": "174.5 KB"
+            },
+            {
+              "path": "/大二必限课程/概率论与数理统计/2022春概统期末考卷.pdf",
+              "name": "2022春概统期末考卷.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F2022%E6%98%A5%E6%A6%82%E7%BB%9F%E6%9C%9F%E6%9C%AB%E8%80%83%E5%8D%B7.pdf",
+              "size": "271.7 KB"
+            },
+            {
+              "path": "/大二必限课程/概率论与数理统计/2022概率论与数理统计期末试题AAA-王小群pdf.pdf",
+              "name": "2022概率论与数理统计期末试题AAA-王小群pdf.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F2022%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98AAA-%E7%8E%8B%E5%B0%8F%E7%BE%A4pdf.pdf",
+              "size": "502.5 KB"
+            },
+            {
+              "path": "/大二必限课程/概率论与数理统计/概率统计期末样题参考解答.pdf",
+              "name": "概率统计期末样题参考解答.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%2F%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%9C%9F%E6%9C%AB%E6%A0%B7%E9%A2%98%E5%8F%82%E8%80%83%E8%A7%A3%E7%AD%94.pdf",
+              "size": "71.9 KB"
+            }
+          ]
+        },
+        {
+          "name": "理论力学",
+          "count": 9,
+          "files": [
+            {
+              "path": "/大二必限课程/理论力学/★2018秋理论力学期末真题.pdf",
+              "name": "★2018秋理论力学期末真题.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F%E2%98%852018%E7%A7%8B%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98.pdf",
+              "size": "502.9 KB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/13答案.pdf",
+              "name": "13答案.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F13%E7%AD%94%E6%A1%88.pdf",
+              "size": "143.8 KB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/2011理论力学试题答案_888708385(1).pdf",
+              "name": "2011理论力学试题答案_888708385(1).pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F2011%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E8%AF%95%E9%A2%98%E7%AD%94%E6%A1%88_888708385(1).pdf",
+              "size": "708.3 KB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/2016期末样题02_92303679.pdf",
+              "name": "2016期末样题02_92303679.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F2016%E6%9C%9F%E6%9C%AB%E6%A0%B7%E9%A2%9802_92303679.pdf",
+              "size": "139.3 KB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/A卷参考答案-2018秋理论力学期末统考 (1).pdf",
+              "name": "A卷参考答案-2018秋理论力学期末统考 (1).pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2FA%E5%8D%B7%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88-2018%E7%A7%8B%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E6%9C%9F%E6%9C%AB%E7%BB%9F%E8%80%83%20(1).pdf",
+              "size": "1.0 MB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/A卷参考答案-2018秋理论力学期末统考.pdf",
+              "name": "A卷参考答案-2018秋理论力学期末统考.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2FA%E5%8D%B7%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88-2018%E7%A7%8B%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E6%9C%9F%E6%9C%AB%E7%BB%9F%E8%80%83.pdf",
+              "size": "1.0 MB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/理论力学习题课一.pdf",
+              "name": "理论力学习题课一.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E4%B9%A0%E9%A2%98%E8%AF%BE%E4%B8%80.pdf",
+              "size": "1.6 MB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/期末样卷.pdf",
+              "name": "期末样卷.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F%E6%9C%9F%E6%9C%AB%E6%A0%B7%E5%8D%B7.pdf",
+              "size": "330.6 KB"
+            },
+            {
+              "path": "/大二必限课程/理论力学/期末样卷2.pdf",
+              "name": "期末样卷2.pdf",
+              "url": "https://cloud.tsinghua.edu.cn/d/9af9970c17f845f1bb2c/files/?p=%2F%E5%A4%A7%E4%BA%8C%E5%BF%85%E9%99%90%E8%AF%BE%E7%A8%8B%2F%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%2F%E6%9C%9F%E6%9C%AB%E6%A0%B7%E5%8D%B72.pdf",
+              "size": "134.6 KB"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+</script>
+  <script>
 /* =========================================================
    星火二班 · 班级主页交互
    纯原生 JavaScript，无外部依赖。
@@ -11017,11 +11558,35 @@ F = 3n - 2PL - PH
 
   /* ---------- study repository ---------- */
 
+  function uploadedRepoDocs() {
+    return documentMediaItems().map((item) => ({
+      id: `uploaded-${item.id}`,
+      course: mediaTargetName(item) || "同学上传",
+      file: item.name,
+      title: item.caption || item.name.replace(/\.[^.]+$/, ""),
+      author: item.contributor || "班级同学",
+      date: String(item.createdAt || "").slice(0, 10),
+      type: `${extensionOf(item.name).toUpperCase() || "FILE"} · 同学上传`,
+      tags: ["同学上传"],
+      summary: item.description || "",
+      markdown: "",
+      uploaded: true,
+      mediaId: item.id,
+      size: item.size || 0,
+      url: item.url || "",
+      description: item.description || ""
+    }));
+  }
+
+  function allRepoDocs() {
+    return [...DATA.resources, ...uploadedRepoDocs()];
+  }
+
   function repoCourses() {
     const order = [];
     const map = new Map();
 
-    DATA.resources.forEach((doc) => {
+    allRepoDocs().forEach((doc) => {
       if (!map.has(doc.course)) {
         const course = { name: doc.course, docs: [] };
         map.set(doc.course, course);
@@ -11042,14 +11607,15 @@ F = 3n - 2PL - PH
   }
 
   function findRepoDoc(id) {
-    return DATA.resources.find((doc) => doc.id === id) || null;
+    return allRepoDocs().find((doc) => doc.id === id) || null;
   }
 
   function repoLatestDate() {
-    return DATA.resources.map((doc) => doc.date).sort().slice(-1)[0] || "";
+    return allRepoDocs().map((doc) => doc.date).sort().slice(-1)[0] || "";
   }
 
   function repoDocSize(doc) {
+    if (doc.uploaded) return formatFileSize(doc.size);
     const bytes = new Blob([doc.markdown || ""]).size;
     if (bytes < 1024) return `${bytes} B`;
     return `${(bytes / 1024).toFixed(1)} KB`;
@@ -11173,7 +11739,7 @@ F = 3n - 2PL - PH
 
   function repoSearchView(query) {
     const normalized = query.toLowerCase();
-    const results = DATA.resources.filter((doc) =>
+    const results = allRepoDocs().filter((doc) =>
       [doc.title, doc.file, doc.course, doc.type, doc.author, doc.summary, ...(doc.tags || []), doc.markdown]
         .join(" ")
         .toLowerCase()
@@ -11216,7 +11782,56 @@ F = 3n - 2PL - PH
     `;
   }
 
+  function uploadedDocUrl(doc) {
+    const item = mediaState.items.find((media) => media.id === doc.mediaId);
+    if (!item) return "#";
+    if (item.url) return item.url;
+    if (!item.previewUrl) item.previewUrl = URL.createObjectURL(item.blob);
+    return item.previewUrl;
+  }
+
+  function repoUploadedDocView(doc) {
+    const url = uploadedDocUrl(doc);
+    const ext = extensionOf(doc.file).toUpperCase() || "FILE";
+
+    return `
+      ${repoBreadcrumb([
+        { type: "course", label: doc.course },
+        { label: doc.file }
+      ])}
+      <div class="doc-file-head">
+        <div class="doc-file-title">
+          <h2><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>${escapeHTML(doc.file)}</h2>
+          <p>${escapeHTML(doc.course)} · ${escapeHTML(ext)} · ${repoDocSize(doc)} · 上传人 ${escapeHTML(doc.author)}</p>
+        </div>
+        <div class="doc-file-actions">
+          <a class="doc-action-btn" href="${url}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>打开
+          </a>
+          <a class="doc-action-btn doc-action-btn--edit" href="${url}" download="${escapeHTML(doc.file)}">
+            <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>下载
+          </a>
+        </div>
+      </div>
+      <div class="uploaded-file-preview">
+        <div class="uploaded-file-badge"><span>${escapeHTML(ext)}</span><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg></div>
+        <h3>${escapeHTML(doc.title)}</h3>
+        <p>${escapeHTML(doc.description || "由班级同学上传的学习资料，点击下方按钮查看或下载。")}</p>
+        <a class="button button--outline" href="${url}" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>
+          打开文件
+        </a>
+      </div>
+      <div class="doc-footer">
+        <span>上传人：<strong>${escapeHTML(doc.author)}</strong></span>
+        <span>上传日期：<strong>${escapeHTML(doc.date)}</strong></span>
+        <span>路径：<strong>${escapeHTML(doc.course)}/${escapeHTML(doc.file)}</strong></span>
+      </div>
+    `;
+  }
+
   function repoDocView(doc) {
+    if (doc.uploaded) return repoUploadedDocView(doc);
     const isRaw = state.repoRaw;
     const rawContent = `<pre class="raw-markdown">${escapeHTML(doc.markdown || "")}</pre>`;
     const previewContent = `<article class="markdown">${renderMarkdown(doc.markdown || "")}</article>`;
@@ -11288,7 +11903,7 @@ F = 3n - 2PL - PH
       <button class="repo-tree-item${rootActive ? " is-active" : ""}" type="button" data-repo-root>
         <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
         <span>全部文档</span>
-        <small>${DATA.resources.length}</small>
+        <small>${allRepoDocs().length}</small>
       </button>
     `;
 
@@ -11368,14 +11983,15 @@ F = 3n - 2PL - PH
   }
 
   function updateRepoSummary() {
-    const contributors = new Set(DATA.resources.map((doc) => doc.author));
+    const docs = allRepoDocs();
+    const contributors = new Set(docs.map((doc) => doc.author));
     const docCount = $("#repoDocCount");
     const contributorCount = $("#repoContributorCount");
     const treeCount = $("#repoTreeCount");
     const updatedMeta = $("#repoUpdatedMeta");
     const description = $("#repoDescription");
 
-    if (docCount) docCount.textContent = String(DATA.resources.length);
+    if (docCount) docCount.textContent = String(docs.length);
     if (contributorCount) contributorCount.textContent = String(contributors.size);
     if (treeCount) treeCount.textContent = `${repoCourses().length} 个课程`;
     if (updatedMeta) {
@@ -12329,6 +12945,85 @@ F = 3n - 2PL - PH
     });
   }
 
+  /* ---------- Tsinghua cloud archive ---------- */
+
+  function safeCloudUrl(url) {
+    try {
+      const parsed = new URL(url);
+      if (parsed.protocol !== "https:" || parsed.hostname !== "cloud.tsinghua.edu.cn") return "#";
+      return parsed.href;
+    } catch (error) {
+      return "#";
+    }
+  }
+
+  function renderCloudLibrary() {
+    const section = $("#cloudLibrary");
+    const body = $("#cloudLibraryBody");
+    const data = DATA.cloudResources;
+    if (!section || !body) return;
+
+    if (!data || !Array.isArray(data.categories) || data.categories.length === 0) {
+      section.hidden = true;
+      return;
+    }
+
+    section.hidden = false;
+    const count = $("#cloudFileCount");
+    const syncTime = $("#cloudSyncTime");
+    const sourceLink = $("#cloudSourceLink");
+    if (count) count.textContent = `${data.totalFiles || 0} 份文件`;
+    if (syncTime) syncTime.textContent = data.syncedAt ? `整理于 ${data.syncedAt}` : "";
+    if (sourceLink) sourceLink.href = safeCloudUrl(data.source || "#");
+
+    body.innerHTML = data.categories
+      .map(
+        (category, categoryIndex) => `
+        <details class="cloud-category"${categoryIndex === 0 ? " open" : ""}>
+          <summary>
+            <span>${escapeHTML(category.name)}</span>
+            <small>${category.count} 份</small>
+          </summary>
+          <div class="cloud-course-list">
+            ${category.groups
+              .map(
+                (group, groupIndex) => `
+                <details class="cloud-course"${categoryIndex === 0 && groupIndex === 0 ? " open" : ""}>
+                  <summary>
+                    <span>${escapeHTML(group.name)}</span>
+                    <small>${group.count} 份</small>
+                  </summary>
+                  <div class="cloud-file-list">
+                    ${group.files
+                      .map((file) => {
+                        const url = safeCloudUrl(file.url);
+                        const downloadUrl = `${url}${url.includes("?") ? "&" : "?"}dl=1`;
+                        const ext = extensionOf(file.name).toUpperCase() || "FILE";
+                        return `
+                          <div class="cloud-file-row">
+                            <span class="cloud-file-ext">${escapeHTML(ext)}</span>
+                            <a class="cloud-file-main" href="${url}" target="_blank" rel="noopener">
+                              <strong>${escapeHTML(file.name)}</strong>
+                              <small>${escapeHTML(category.name)} / ${escapeHTML(group.name)}</small>
+                            </a>
+                            <span class="cloud-file-size">${escapeHTML(file.size || "")}</span>
+                            <a class="cloud-file-download" href="${downloadUrl}" target="_blank" rel="noopener" aria-label="下载 ${escapeHTML(file.name)}">下载</a>
+                          </div>
+                        `;
+                      })
+                      .join("")}
+                  </div>
+                </details>
+              `
+              )
+              .join("")}
+          </div>
+        </details>
+      `
+      )
+      .join("");
+  }
+
   /* ---------- PWA install ---------- */
 
   let deferredInstallPrompt = null;
@@ -12652,6 +13347,7 @@ F = 3n - 2PL - PH
     renderProjects();
     renderEventMedia();
     renderDocUploads();
+    renderRepo();
   }
 
   function renderEventMedia() {
@@ -13835,6 +14531,7 @@ F = 3n - 2PL - PH
     initEditorEvents();
     initEditEntryPoints();
     initMedia();
+    renderCloudLibrary();
     initPwa();
     initStats();
     initModalEvents();

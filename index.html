@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="明德大学机械系智造52班班级主页：学习文档仓库、大事记录、项目实践与成员名录。">
+  <meta name="description" content="明德大学机械系智造52班班级主页：学习文档仓库、班级纪实、科创实践与成员名录。">
   <meta name="theme-color" content="#143b32">
   <title>智造52 · 班级主页</title>
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMzIiIGZpbGw9IiMxNDNiMzIiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIyNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTJiNDViIiBzdHJva2Utb3BhY2l0eT0iLjU1Ii8+CiAgPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y2ZjFlNyIgc3Ryb2tlLW9wYWNpdHk9Ii4xNiIvPgogIDx0ZXh0IHg9IjMyIiB5PSI0MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IlNvbmd0aSBTQywgU1RTb25nLCBzZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iI2Y2ZjFlNyI+5Y+BPC90ZXh0PgogIDxjaXJjbGUgY3g9IjQ3IiBjeT0iMTgiIHI9IjIuNSIgZmlsbD0iI2UyYjQ1YiIvPgo8L3N2Zz4K">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="智造52">
+  <meta name="mobile-web-app-capable" content="yes">
 <style>
 /* =========================================================
    星火二班 · 班级主页
@@ -4528,6 +4534,51 @@ body.menu-open .mobile-menu {
   color: var(--gold);
 }
 
+.install-app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--line-light);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(246, 241, 231, 0.64);
+  font-size: 10px;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.install-app-btn .icon {
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.install-app-btn:hover {
+  border-color: var(--gold);
+  color: var(--paper);
+}
+
+.install-app-btn--footer {
+  display: inline-flex;
+  margin-top: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: rgba(246, 241, 231, 0.45);
+  font-size: 11px;
+  text-align: left;
+}
+
+.install-app-btn--footer .icon {
+  color: inherit;
+}
+
+.install-app-btn--footer:hover {
+  border-color: transparent;
+  color: var(--gold);
+}
+
 /* ---------- repository shell ---------- */
 
 .repo-shell {
@@ -6521,6 +6572,380 @@ body.menu-open .mobile-menu {
   font-size: 11px;
 }
 
+/* ---------- shared login ---------- */
+
+.shared-login {
+  background: var(--paper);
+}
+
+.shared-login-head {
+  padding: 42px 40px 22px;
+  border-bottom: 1px solid var(--line-soft);
+  background:
+    radial-gradient(circle at 91% 18%, rgba(226, 180, 91, 0.18), transparent 24%),
+    #eee5d4;
+}
+
+.shared-login-head h2 {
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 37px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.shared-login-head > p:last-child {
+  max-width: 570px;
+  margin-top: 8px;
+  color: var(--ink-soft);
+  font-size: 11.5px;
+  line-height: 1.8;
+}
+
+.shared-login-body {
+  padding: 24px 40px 28px;
+}
+
+.shared-login-error {
+  margin-top: 10px;
+  padding: 9px 11px;
+  border: 1px solid rgba(217, 99, 63, 0.25);
+  border-radius: 6px;
+  background: rgba(217, 99, 63, 0.07);
+  color: var(--coral);
+  font-size: 9.5px;
+  line-height: 1.6;
+}
+
+.shared-login .modal-footer {
+  padding: 17px 40px;
+}
+
+/* ---------- per-project archive ---------- */
+
+.project-media-hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  color: var(--ink-muted);
+  font-size: 9.5px;
+  line-height: 1.7;
+}
+
+.project-media-hint .icon {
+  color: var(--gold-deep);
+  font-size: 11px;
+  flex: 0 0 auto;
+}
+
+.project-open {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-media-panel {
+  padding: 13px 20px 15px;
+  border-top: 1px solid var(--line-soft);
+  background: rgba(23, 58, 49, 0.025);
+}
+
+.project-media-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+}
+
+.project-media-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink-soft);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+}
+
+.project-media-title .icon {
+  color: var(--gold-deep);
+  font-size: 12px;
+}
+
+.project-media-title small {
+  display: inline-grid;
+  place-items: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: rgba(23, 58, 49, 0.08);
+  color: var(--ink-muted);
+  font-size: 7.5px;
+}
+
+.project-media-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 8.5px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.project-media-upload .icon {
+  font-size: 10px;
+  color: var(--gold-deep);
+}
+
+.project-media-upload:hover {
+  border-color: var(--ink-soft);
+  background: var(--paper-light);
+  color: var(--ink);
+}
+
+.project-media-upload--wide {
+  margin-top: 13px;
+  padding: 7px 11px;
+  border-radius: 6px;
+  font-size: 9px;
+}
+
+.project-media-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-media-item {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 7px;
+  background: #173a31;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), border-color 0.2s ease;
+}
+
+.project-media-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 58, 49, 0.35);
+}
+
+.media-thumb--compact {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.media-thumb--compact .media-kind {
+  top: 4px;
+  left: 4px;
+  padding: 2px 4px;
+  font-size: 6px;
+}
+
+.media-thumb--compact .media-kind .icon {
+  display: none;
+}
+
+.media-thumb--compact .media-play {
+  width: 23px;
+  height: 23px;
+}
+
+.media-thumb--compact .media-play .icon {
+  width: 9px;
+  height: 9px;
+}
+
+.media-thumb--file {
+  display: grid;
+  place-items: center;
+  background: #eee5d4;
+}
+
+.media-file-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--ink);
+}
+
+.media-file-tile > span {
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.media-file-tile .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-deep);
+}
+
+.project-media-more {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border: 1px dashed var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 8.5px;
+  cursor: pointer;
+}
+
+.project-media-more:hover {
+  border-color: var(--ink-soft);
+  color: var(--ink);
+}
+
+.project-media-empty {
+  color: var(--ink-muted);
+  font-size: 8.5px;
+}
+
+.modal-project-archive {
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.modal-project-media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 2px;
+}
+
+.modal-project-media-grid .project-media-item {
+  width: 70px;
+  height: 70px;
+}
+
+.media-viewer-stage--file {
+  min-height: 310px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(226, 180, 91, 0.17), transparent 30%),
+    #f0e8da;
+}
+
+.media-file-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 310px;
+  padding: 30px;
+  text-align: center;
+}
+
+.media-file-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 82px;
+  height: 96px;
+  margin-bottom: 4px;
+  border: 1px solid rgba(23, 58, 49, 0.2);
+  border-radius: 5px;
+  background: var(--paper-light);
+  color: var(--ink);
+  box-shadow: 0 10px 22px -16px rgba(13, 43, 36, 0.5);
+}
+
+.media-file-badge > span {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.media-file-badge .icon {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  width: 16px;
+  height: 16px;
+  color: var(--gold-deep);
+}
+
+.media-file-viewer h3 {
+  max-width: 520px;
+  font-family: var(--display);
+  font-size: 23px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.media-file-viewer p {
+  color: var(--ink-muted);
+  font-size: 9.5px;
+}
+
+.media-file-viewer .button {
+  margin-top: 8px;
+  min-height: 37px;
+  font-size: 10px;
+}
+
+.media-file-viewer .button .icon {
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .project-media-panel {
+    padding: 12px 15px 14px;
+  }
+
+  .project-media-item {
+    width: 54px;
+    height: 54px;
+  }
+
+  .project-media-strip {
+    gap: 5px;
+  }
+
+  .project-media-hint {
+    align-items: flex-start;
+    font-size: 8.5px;
+  }
+
+  .modal-project-media-grid .project-media-item {
+    width: 61px;
+    height: 61px;
+  }
+
+  .media-viewer-stage--file {
+    min-height: 240px;
+  }
+
+  .media-file-viewer {
+    min-height: 240px;
+    padding: 22px 16px;
+  }
+
+  .media-file-viewer h3 {
+    font-size: 20px;
+  }
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1020px) {
@@ -7054,6 +7479,18 @@ body.menu-open .mobile-menu {
   .media-hub-note {
     font-size: 8px;
   }
+
+  .shared-login-head {
+    padding: 34px 20px 18px;
+  }
+
+  .shared-login-body {
+    padding: 18px 20px 22px;
+  }
+
+  .shared-login .modal-footer {
+    padding: 15px 20px;
+  }
 }
 
 @media (max-width: 380px) {
@@ -7180,8 +7617,8 @@ body.menu-open .mobile-menu {
 
       <nav class="desktop-nav" aria-label="主导航">
         <a class="nav-link" href="#resources" data-nav="resources"><span>学习文档</span><small>01</small></a>
-        <a class="nav-link" href="#events" data-nav="events"><span>大事记录</span><small>02</small></a>
-        <a class="nav-link" href="#innovation" data-nav="innovation"><span>项目实践</span><small>03</small></a>
+        <a class="nav-link" href="#events" data-nav="events"><span>班级纪实</span><small>02</small></a>
+        <a class="nav-link" href="#innovation" data-nav="innovation"><span>科创实践</span><small>03</small></a>
         <a class="nav-link" href="#members" data-nav="members"><span>成员录</span><small>04</small></a>
       </nav>
 
@@ -7208,8 +7645,8 @@ body.menu-open .mobile-menu {
     </div>
     <nav>
       <a href="#resources"><small>01</small><span>学习文档</span><em>DOCS</em></a>
-      <a href="#events"><small>02</small><span>大事记录</span><em>MEMORY</em></a>
-      <a href="#innovation"><small>03</small><span>项目实践</span><em>BUILD</em></a>
+      <a href="#events"><small>02</small><span>班级纪实</span><em>MEMORY</em></a>
+      <a href="#innovation"><small>03</small><span>科创实践</span><em>BUILD</em></a>
       <a href="#members"><small>04</small><span>成员录</span><em>PEOPLE</em></a>
     </nav>
     <div class="mobile-menu-foot">
@@ -7218,6 +7655,10 @@ body.menu-open .mobile-menu {
       <button class="mobile-menu-edit" id="mobileMenuEdit" type="button">
         <svg class="icon" aria-hidden="true"><use href="#icon-pencil"></use></svg>
         编辑班级内容
+      </button>
+      <button class="install-app-btn" type="button" data-install-app hidden>
+        <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>
+        安装到手机桌面
       </button>
     </div>
   </aside>
@@ -7255,7 +7696,7 @@ body.menu-open .mobile-menu {
               <dd><span data-stat="resources">10</span><small>份</small></dd>
             </div>
             <div>
-              <dt>大事记</dt>
+              <dt>纪实</dt>
               <dd><span data-stat="events">10</span><small>件</small></dd>
             </div>
             <div>
@@ -7431,16 +7872,16 @@ body.menu-open .mobile-menu {
           </div>
           <div class="section-heading">
             <p class="section-kicker">日子会过去，我们记得</p>
-            <h2 id="eventsTitle">班级大事记录</h2>
+            <h2 id="eventsTitle">班级纪实</h2>
           </div>
           <div class="section-aside">
             <p>班会、运动会、团建、项目路演……日子被一件件小事串起来，就成了我们的共同记忆。点开一张卡片，翻开那一天的注脚。</p>
-            <span id="eventTotal">共 10 件大事</span>
+            <span id="eventTotal">共 10 篇纪实</span>
           </div>
         </header>
 
         <div class="toolbar toolbar--light" data-reveal>
-          <div class="filter-row filter-row--light" id="eventFilters" role="group" aria-label="按类型筛选班级大事"></div>
+          <div class="filter-row filter-row--light" id="eventFilters" role="group" aria-label="按类型筛选班级纪实"></div>
           <p class="result-count" id="eventCount" aria-live="polite"></p>
         </div>
 
@@ -7467,86 +7908,37 @@ body.menu-open .mobile-menu {
             <small>PROJECTS<br>&amp; IDEAS</small>
           </div>
           <div class="section-heading">
-            <p class="section-kicker">把课程作业，做成真实项目</p>
-            <h2 id="innovationTitle">班级项目实践</h2>
+            <p class="section-kicker">把奇思妙想，做成真实作品</p>
+            <h2 id="innovationTitle">科创实践</h2>
           </div>
           <div class="section-aside">
-            <p>从课程作业到真实项目，我们把问题带进实验室，也把图纸带到真实场景里。一次迭代不一定完美，但每一次提交都算数。</p>
-            <span id="projectTotal">共 4 个项目</span>
+            <p>从课程作业到科创作品，我们把想法带进实验室，也把图纸带到真实场景里。一次迭代不一定完美，但每一次尝试都算数。</p>
+            <span id="projectTotal">共 4 个科创项目</span>
           </div>
         </header>
 
         <div class="innovation-banner" data-reveal>
           <div class="innovation-quote">
             <span aria-hidden="true">“</span>
-            <p>让机构站上展台，<br>也让图纸回到现场。</p>
+            <p>让创意站上展台，<br>也让作品回到现场。</p>
             <small>FROM COURSEWORK TO CREATION</small>
           </div>
           <div class="innovation-numbers">
-            <div><strong id="projectCount">4</strong><span>个班级项目</span></div>
-            <div><strong id="projectAwards">4</strong><span>项项目奖项</span></div>
+            <div><strong id="projectCount">4</strong><span>个科创项目</span></div>
+            <div><strong id="projectAwards">4</strong><span>项科创奖项</span></div>
             <div><strong id="projectMakers">10</strong><span>位参与同学</span></div>
           </div>
         </div>
 
         <div class="project-grid" id="projectGrid"></div>
 
-        <section class="media-hub" id="projectMedia" aria-labelledby="mediaTitle" data-reveal>
-          <div class="media-hub-head">
-            <div class="media-heading">
-              <p class="media-eyebrow"><span>PROJECT GALLERY</span><i>52</i></p>
-              <h3 id="mediaTitle">项目影像馆</h3>
-              <p>调试时的桌面、成品的细节、路演现场的掌声。把项目真实发生过的瞬间，留在这里。</p>
-            </div>
-            <div class="media-head-actions">
-              <span class="media-count" id="mediaCount">0 份影像</span>
-              <button class="media-upload-btn" id="mediaUploadBtn" type="button">
-                <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
-                上传影像
-              </button>
-            </div>
-          </div>
-
-          <div class="media-toolbar">
-            <div class="media-filters" id="mediaFilters" role="group" aria-label="筛选项目影像">
-              <button class="is-active" type="button" data-media-filter="all" aria-pressed="true">全部</button>
-              <button type="button" data-media-filter="image" aria-pressed="false">图片</button>
-              <button type="button" data-media-filter="video" aria-pressed="false">视频</button>
-            </div>
-            <span class="media-local-note"><span aria-hidden="true"></span>上传内容保存在当前浏览器</span>
-          </div>
-
-          <div class="media-grid" id="mediaGrid"></div>
-
-          <div class="media-empty" id="mediaEmpty">
-            <div class="media-empty-art" aria-hidden="true">
-              <span class="media-empty-card media-empty-card--back"></span>
-              <span class="media-empty-card media-empty-card--front">
-                <svg class="icon"><use href="#icon-image"></use></svg>
-              </span>
-              <span class="media-empty-play">
-                <svg class="icon"><use href="#icon-video"></use></svg>
-              </span>
-            </div>
-            <div class="media-empty-copy">
-              <h4>还没有项目影像</h4>
-              <p>上传第一张照片或一段短视频，记录项目从图纸到实物的过程。</p>
-            </div>
-            <button class="media-upload-btn media-upload-btn--ghost" id="mediaEmptyUpload" type="button">
-              <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
-              选择图片 / 视频
-            </button>
-            <small>支持 JPG、PNG、WebP、MP4、WebM，单个文件建议不超过 200 MB。</small>
-          </div>
-
-          <p class="media-hub-note">
-            <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
-            影像是本地预览：换一台电脑或换浏览器不会同步。要全班共享，需要接入对象存储或后端。
-          </p>
-        </section>
+        <p class="project-media-hint">
+          <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+          每个科创项目下方都有独立的「项目档案」，可以上传图片、视频、PDF、演示文稿和压缩包。
+        </p>
 
         <div class="project-section-foot" data-reveal>
-          <p>下一次，想把什么问题变成作品？</p>
+          <p>下一次，想把什么想法变成作品？</p>
           <a class="button button--outline" href="#members">找到你的队友<svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
         </div>
       </div>
@@ -7578,7 +7970,7 @@ body.menu-open .mobile-menu {
           <div class="member-board-legend">
             <span><strong data-directory-count="committee">12</strong> 位班委</span>
             <span><strong data-directory-count="reps">10</strong> 位课代表</span>
-            <span><strong data-directory-count="groups">6</strong> 个项目小组</span>
+            <span><strong data-directory-count="groups">6</strong> 个科创小组</span>
           </div>
         </div>
 
@@ -7653,10 +8045,13 @@ body.menu-open .mobile-menu {
         <p class="footer-motto" data-profile="motto">把图纸画进现实，也把热爱做进细节。</p>
         <nav class="footer-nav" aria-label="页脚导航">
           <a href="#resources">学习文档</a>
-          <a href="#events">大事记录</a>
-          <a href="#innovation">项目实践</a>
+          <a href="#events">班级纪实</a>
+          <a href="#innovation">科创实践</a>
           <a href="#members">成员录</a>
           <button class="footer-edit" id="footerEdit" type="button"><svg class="icon" aria-hidden="true"><use href="#icon-pencil"></use></svg>编辑班级内容</button>
+          <button class="install-app-btn install-app-btn--footer" type="button" data-install-app hidden>
+            <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>安装到桌面
+          </button>
         </nav>
       </div>
 
@@ -7695,7 +8090,7 @@ body.menu-open .mobile-menu {
   </button>
 
   <noscript>
-    <div class="noscript">这个页面需要启用 JavaScript 才能浏览班级文档、大事记录、项目实践与成员名录。</div>
+    <div class="noscript">这个页面需要启用 JavaScript 才能浏览班级文档、班级纪实、科创实践与成员名录。</div>
   </noscript>
 
   <script>
@@ -9117,10 +9512,22 @@ F = 3n - 2PL - PH
 
   const mediaState = {
     items: [],
-    filter: "all",
-    galleryUrls: [],
+    cardUrls: [],
     viewerUrl: null,
     dbPromise: null
+  };
+
+  const IMAGE_EXTENSIONS = new Set(["jpg", "jpeg", "png", "webp", "gif", "avif"]);
+  const VIDEO_EXTENSIONS = new Set(["mp4", "webm", "mov", "m4v", "ogv"]);
+  const FILE_EXTENSIONS = new Set([
+    "pdf", "doc", "docx", "ppt", "pptx", "xls", "xlsx", "csv", "txt", "md", "zip", "rar", "7z"
+  ]);
+
+  const sharedState = {
+    mode: false,
+    authenticated: false,
+    version: 0,
+    pendingAction: null
   };
 
   let pendingMediaFiles = [];
@@ -9366,7 +9773,7 @@ F = 3n - 2PL - PH
             <span>${escapeHTML(event.location)}</span>
             <span class="event-more">翻开这一天</span>
           </div>
-          <button class="card-hit" type="button" data-event-id="${escapeHTML(event.id)}" aria-label="查看班级大事：${escapeHTML(event.title)}"></button>
+          <button class="card-hit" type="button" data-event-id="${escapeHTML(event.id)}" aria-label="查看班级纪实：${escapeHTML(event.title)}"></button>
         </article>
       </article>
     `;
@@ -9390,11 +9797,11 @@ F = 3n - 2PL - PH
     if (count) {
       count.textContent =
         state.eventCategory === "全部"
-          ? `共收录 ${filtered.length} 件大事`
-          : `${state.eventCategory} · ${filtered.length} 件`;
+          ? `共收录 ${filtered.length} 篇纪实`
+          : `${state.eventCategory} · ${filtered.length} 篇`;
     }
     if (empty) empty.hidden = filtered.length > 0;
-    if (total) total.textContent = `共 ${DATA.events.length} 件大事`;
+    if (total) total.textContent = `共 ${DATA.events.length} 篇纪实`;
   }
 
   /* ---------- projects ---------- */
@@ -9981,10 +10388,10 @@ F = 3n - 2PL - PH
               <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
               ${escapeHTML(project.award)}
             </span>
-            <span class="project-open">查看项目</span>
+            <button class="project-open" type="button" data-project-id="${escapeHTML(project.id)}" aria-label="查看科创项目：${escapeHTML(project.title)}">查看项目</button>
           </div>
         </div>
-        <button class="card-hit" type="button" data-project-id="${escapeHTML(project.id)}" aria-label="查看科创项目：${escapeHTML(project.title)}"></button>
+        ${projectMediaPanel(project)}
       </article>
     `;
   }
@@ -9993,6 +10400,7 @@ F = 3n - 2PL - PH
     const grid = $("#projectGrid");
     if (!grid) return;
 
+    clearCardUrls();
     grid.innerHTML = DATA.projects.map(projectCard).join("");
 
     const projectCount = $("#projectCount");
@@ -10008,7 +10416,7 @@ F = 3n - 2PL - PH
       const makers = new Set(DATA.projects.flatMap((project) => project.team));
       projectMakers.textContent = String(makers.size);
     }
-    if (projectTotal) projectTotal.textContent = `共 ${DATA.projects.length} 个项目`;
+    if (projectTotal) projectTotal.textContent = `共 ${DATA.projects.length} 个科创项目`;
   }
 
   /* ---------- members ---------- */
@@ -10848,7 +11256,7 @@ F = 3n - 2PL - PH
     },
     {
       type: "events",
-      label: "大事记录",
+      label: "班级纪实",
       en: "MEMORIES",
       icon: "star",
       desc: "记录值得回看的班级时刻。日期格式为 YYYY-MM-DD。",
@@ -10866,7 +11274,7 @@ F = 3n - 2PL - PH
     },
     {
       type: "projects",
-      label: "项目实践",
+      label: "科创实践",
       en: "PROJECTS",
       icon: "folder",
       desc: "维护项目介绍、团队、奖项与成果。",
@@ -10973,7 +11381,7 @@ F = 3n - 2PL - PH
           <div class="editor-sidebar-head">
             <p>SE02 CONTENT STUDIO</p>
             <h2>内容编辑</h2>
-            <span>修改会立即显示，并保存在当前浏览器。发布给全班前请导出备份。</span>
+            <span>${sharedState.mode ? "修改会保存到班级服务器，所有同学刷新后都能看到。" : "修改会立即显示，并保存在当前浏览器。发布给全班前请导出备份。"}</span>
           </div>
           <nav class="editor-nav" aria-label="选择要编辑的内容">
             ${EDITOR_TYPES.map(
@@ -10986,7 +11394,7 @@ F = 3n - 2PL - PH
           <div class="editor-sidebar-foot">
             <p class="editor-storage-note">
               <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
-              保存的位置是浏览器本地，不会自动同步到其他设备。
+              ${sharedState.mode ? "当前为共享编辑，内容会保存到班级服务器。" : "保存的位置是浏览器本地，不会自动同步到其他设备。"}
             </p>
             <button class="editor-reset" type="button" data-editor-reset>恢复默认内容</button>
           </div>
@@ -11001,7 +11409,7 @@ F = 3n - 2PL - PH
           </header>
           <div class="editor-form" id="editorForm">${config.fields.map((field) => editorField(field, current.data)).join("")}</div>
           <footer class="editor-main-foot">
-            <p class="editor-foot-note">当前编辑：${escapeHTML(current.label)}<br>保存后可在页面上立即查看；刷新不会丢失本次浏览器的修改。</p>
+            <p class="editor-foot-note">当前编辑：${escapeHTML(current.label)}<br>${sharedState.mode ? "保存后会同步给全班，请确认内容无误。" : "保存后可在页面上立即查看；刷新不会丢失本次浏览器的修改。"}</p>
             <div class="editor-foot-actions">
               <button class="editor-btn" type="button" data-editor-import>导入备份</button>
               <button class="editor-btn" type="button" data-editor-export>导出备份</button>
@@ -11017,7 +11425,98 @@ F = 3n - 2PL - PH
     `;
   }
 
+  function openSharedLogin() {
+    openModal(`
+      <div class="shared-login">
+        <div class="shared-login-head">
+          <p class="modal-kicker">班级共享编辑</p>
+          <h2 id="modalTitle">输入班级密码</h2>
+          <p>验证后可以编辑文档、纪实、科创项目和成员资料，也可以上传共享档案。修改会保存到班级服务器。</p>
+        </div>
+        <div class="shared-login-body">
+          <div class="editor-field">
+            <label for="sharedPassword">班级编辑密码</label>
+            <input id="sharedPassword" type="password" autocomplete="current-password" placeholder="请输入班级密码">
+            <small>第一次使用请看 server/config.json 中的 password，或询问班级管理员。</small>
+          </div>
+          <p class="shared-login-error" id="sharedLoginError" hidden></p>
+        </div>
+        <div class="modal-footer">
+          <p class="modal-footer-note">登录状态会保留在当前浏览器 7 天。</p>
+          <div class="editor-foot-actions">
+            <button class="editor-btn" type="button" data-close-modal>取消</button>
+            <button class="editor-btn editor-btn--primary" id="sharedLoginSubmit" type="button">进入编辑模式</button>
+          </div>
+        </div>
+      </div>
+    `);
+
+    const input = $("#sharedPassword");
+    const button = $("#sharedLoginSubmit");
+    const errorNode = $("#sharedLoginError");
+
+    const submit = async () => {
+      const password = input?.value || "";
+      if (!password) {
+        if (errorNode) {
+          errorNode.textContent = "请输入班级密码";
+          errorNode.hidden = false;
+        }
+        input?.focus();
+        return;
+      }
+
+      if (button) {
+        button.disabled = true;
+        button.textContent = "正在验证…";
+      }
+
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || "密码不正确");
+
+        sharedState.authenticated = true;
+        updateSharedUI();
+        closeModal();
+        showToast("已进入班级共享编辑模式");
+        const action = sharedState.pendingAction;
+        sharedState.pendingAction = null;
+        if (action) window.setTimeout(action, 220);
+      } catch (error) {
+        if (errorNode) {
+          errorNode.textContent = error.message || "密码不正确";
+          errorNode.hidden = false;
+        }
+        if (button) {
+          button.disabled = false;
+          button.textContent = "进入编辑模式";
+        }
+        input?.select();
+      }
+    };
+
+    button?.addEventListener("click", submit);
+    input?.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        submit();
+      }
+    });
+    window.setTimeout(() => input?.focus(), 180);
+  }
+
   function openEditor(type = "profile", id = null) {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = () => openEditor(type, id);
+      openSharedLogin();
+      return;
+    }
+
     editorState.type = type;
     editorState.id = id || editorItems(type)[0]?.id || null;
     const content = $("#modalContent");
@@ -11050,15 +11549,15 @@ F = 3n - 2PL - PH
         const file = importInput.files && importInput.files[0];
         if (!file) return;
         const reader = new FileReader();
-        reader.onload = () => {
+        reader.onload = async () => {
           try {
             const saved = JSON.parse(String(reader.result));
             applySavedContent(saved);
-            persistContent();
+            await persistContent();
             showToast("备份已导入，页面即将刷新");
             window.setTimeout(() => window.location.reload(), 800);
           } catch (error) {
-            showToast("导入失败：备份文件格式不正确");
+            showToast(error.message || "导入失败：备份文件格式不正确");
           }
         };
         reader.readAsText(file);
@@ -11076,7 +11575,7 @@ F = 3n - 2PL - PH
     }
   }
 
-  function saveEditor() {
+  async function saveEditor() {
     const config = editorConfig(editorState.type);
     const items = editorItems(editorState.type);
     const current = items.find((item) => item.id === editorState.id) || items[0];
@@ -11128,7 +11627,12 @@ F = 3n - 2PL - PH
       }
     }
 
-    persistContent();
+    try {
+      await persistContent();
+    } catch (error) {
+      showToast(error.message || "保存失败，请稍后重试");
+      return;
+    }
 
     if (editorState.type === "resources") {
       state.repoView = "doc";
@@ -11145,7 +11649,7 @@ F = 3n - 2PL - PH
 
     refreshContentAfterEdit(editorState.type);
     closeModal();
-    showToast("修改已保存，仅保存在当前浏览器");
+    showToast(sharedState.mode ? "修改已保存，所有同学都能看到" : "修改已保存，仅保存在当前浏览器");
   }
 
   function refreshContentAfterEdit(type) {
@@ -11164,7 +11668,7 @@ F = 3n - 2PL - PH
     renderRepo();
   }
 
-  function persistContent() {
+  async function persistContent() {
     const payload = {
       savedAt: new Date().toISOString(),
       profile: DATA.profile,
@@ -11172,8 +11676,29 @@ F = 3n - 2PL - PH
       resources: DATA.resources,
       events: DATA.events,
       projects: DATA.projects,
+      groups: DATA.groups,
       members: DATA.members
     };
+
+    if (sharedState.mode) {
+      const response = await fetch("/api/content", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...payload, version: sharedState.version })
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (response.status === 401) {
+        sharedState.authenticated = false;
+        throw new Error("登录已过期，请重新输入班级密码");
+      }
+      if (!response.ok) {
+        throw new Error(result.error || "保存到班级服务器失败");
+      }
+
+      sharedState.version = Number(result.version) || sharedState.version + 1;
+      return;
+    }
 
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
@@ -11186,12 +11711,13 @@ F = 3n - 2PL - PH
     if (!saved || typeof saved !== "object") return;
     if (saved.profile) DATA.profile = { ...DATA.profile, ...saved.profile };
     if (saved.studyRepo) DATA.studyRepo = { ...DATA.studyRepo, ...saved.studyRepo };
-    ["resources", "events", "projects", "members"].forEach((key) => {
+    ["resources", "events", "projects", "groups", "members"].forEach((key) => {
       if (Array.isArray(saved[key]) && saved[key].length) DATA[key] = saved[key];
     });
   }
 
   function loadSavedContent() {
+    if (sharedState.mode) return;
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
@@ -11199,6 +11725,65 @@ F = 3n - 2PL - PH
     } catch (error) {
       // Ignore malformed local data and keep the authored defaults.
     }
+  }
+
+  async function loadSharedContent() {
+    try {
+      const response = await fetch("/api/content", {
+        headers: { Accept: "application/json" },
+        cache: "no-store"
+      });
+      if (!response.ok) return null;
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) return null;
+      const payload = await response.json();
+      if (!payload || !Array.isArray(payload.resources) || !payload.profile) return null;
+      return payload;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function applySharedContent(payload) {
+    if (!payload || typeof payload !== "object") return;
+    if (payload.profile) DATA.profile = payload.profile;
+    if (payload.studyRepo) DATA.studyRepo = payload.studyRepo;
+    ["resources", "events", "projects", "groups", "members"].forEach((key) => {
+      if (Array.isArray(payload[key])) DATA[key] = payload[key];
+    });
+    sharedState.version = Number(payload.version) || 0;
+  }
+
+  async function checkSharedSession() {
+    if (!sharedState.mode) return;
+    try {
+      const response = await fetch("/api/session", { headers: { Accept: "application/json" }, cache: "no-store" });
+      if (!response.ok) return;
+      const payload = await response.json();
+      sharedState.authenticated = Boolean(payload.authenticated);
+    } catch (error) {
+      sharedState.authenticated = false;
+    }
+    updateSharedUI();
+  }
+
+  function updateSharedUI() {
+    if (!sharedState.mode) return;
+
+    const hint = $(".project-media-hint");
+    if (hint) {
+      hint.innerHTML = `<svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>${
+        sharedState.authenticated
+          ? "共享模式：每个项目下的图片、视频和文件会保存到班级服务器，所有同学都能查看。"
+          : "每个科创项目下方都有独立的「项目档案」；登录班级密码后可以上传图片、视频和文件。"
+      }`;
+    }
+
+    const editButtons = [$("#headerEdit"), $("#footerEdit"), $("#mobileMenuEdit"), $("#repoEditBtn")];
+    editButtons.forEach((button) => {
+      if (!button) return;
+      button.title = sharedState.authenticated ? "编辑班级内容" : "登录后编辑班级内容";
+    });
   }
 
   function exportContentBackup() {
@@ -11263,14 +11848,108 @@ F = 3n - 2PL - PH
     });
   }
 
-  /* ---------- project media gallery ---------- */
+  /* ---------- PWA install ---------- */
+
+  let deferredInstallPrompt = null;
+
+  function isStandaloneMode() {
+    return (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true
+    );
+  }
+
+  function setInstallButtonsVisible(visible) {
+    $$("[data-install-app]").forEach((button) => {
+      button.hidden = !visible;
+    });
+  }
+
+  function openInstallHelp() {
+    openModal(`
+      <div class="shared-login">
+        <div class="shared-login-head">
+          <p class="modal-kicker">PWA · 添加到桌面</p>
+          <h2 id="modalTitle">把班级网页装到手机</h2>
+          <p>安装后会以独立窗口打开，像普通 App 一样使用；班级文档和共享编辑仍然需要联网。</p>
+        </div>
+        <div class="shared-login-body">
+          <div class="modal-section">
+            <h3>iPhone / iPad</h3>
+            <p>用 Safari 打开网址 → 点击底部「分享」按钮 → 选择「添加到主屏幕」。</p>
+          </div>
+          <div class="modal-section">
+            <h3>Android</h3>
+            <p>用 Chrome 打开网址 → 点击右上角「⋮」→ 选择「安装应用」或「添加到主屏幕」。</p>
+          </div>
+          <div class="modal-note">
+            <strong>提示</strong>
+            完整安装功能通常需要 HTTPS 地址。通过局域网 HTTP 打开时，部分手机只支持创建快捷方式；使用 Cloudflare Tunnel 等 HTTPS 地址访问后可完整安装。
+          </div>
+        </div>
+        <div class="modal-footer">
+          <p class="modal-footer-note">安装的是网页应用，不会占用应用商店空间。</p>
+          <button class="editor-btn editor-btn--primary" type="button" data-close-modal>知道了</button>
+        </div>
+      </div>
+    `);
+  }
+
+  async function triggerInstall() {
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice.catch(() => null);
+      deferredInstallPrompt = null;
+      if (choice?.outcome === "accepted") {
+        setInstallButtonsVisible(false);
+        showToast("已添加到桌面");
+      }
+      return;
+    }
+    openInstallHelp();
+  }
+
+  function initPwa() {
+    if (!/^https?:$/.test(location.protocol) || isStandaloneMode()) return;
+
+    setInstallButtonsVisible(true);
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      setInstallButtonsVisible(true);
+    });
+
+    window.addEventListener("appinstalled", () => {
+      deferredInstallPrompt = null;
+      setInstallButtonsVisible(false);
+      showToast("班级网页已安装到桌面");
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("[data-install-app]")) {
+        event.preventDefault();
+        triggerInstall();
+      }
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(() => {
+          // HTTP LAN / unsupported browser: PWA installation stays unavailable.
+        });
+      });
+    }
+  }
+
+  /* ---------- project media archive ---------- */
 
   function openMediaDB() {
     if (mediaState.dbPromise) return mediaState.dbPromise;
 
     mediaState.dbPromise = new Promise((resolve, reject) => {
       if (!("indexedDB" in window)) {
-        reject(new Error("当前浏览器不支持本地影像存储"));
+        reject(new Error("当前浏览器不支持本地档案存储"));
         return;
       }
 
@@ -11282,7 +11961,7 @@ F = 3n - 2PL - PH
         }
       };
       request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.error || new Error("无法打开影像数据库"));
+      request.onerror = () => reject(request.error || new Error("无法打开档案数据库"));
     });
 
     return mediaState.dbPromise;
@@ -11296,7 +11975,7 @@ F = 3n - 2PL - PH
           const store = transaction.objectStore(MEDIA_STORE_NAME);
           const request = action(store);
           request.onsuccess = () => resolve(request.result);
-          request.onerror = () => reject(request.error || new Error("影像存储操作失败"));
+          request.onerror = () => reject(request.error || new Error("档案存储操作失败"));
         })
     );
   }
@@ -11313,13 +11992,39 @@ F = 3n - 2PL - PH
     return mediaRequest("readwrite", (store) => store.delete(id));
   }
 
+  function extensionOf(name) {
+    const parts = String(name || "").split(".");
+    return parts.length > 1 ? parts.pop().toLowerCase() : "";
+  }
+
+  function fileKindForName(name, type = "") {
+    const ext = extensionOf(name);
+    const mime = String(type || "");
+    if (IMAGE_EXTENSIONS.has(ext) || mime.startsWith("image/")) {
+      return IMAGE_EXTENSIONS.has(ext) ? "image" : "";
+    }
+    if (VIDEO_EXTENSIONS.has(ext) || mime.startsWith("video/")) {
+      return VIDEO_EXTENSIONS.has(ext) ? "video" : "";
+    }
+    if (FILE_EXTENSIONS.has(ext)) return "file";
+    return "";
+  }
+
+  function validMediaFile(file) {
+    if (!file) return false;
+    return Boolean(fileKindForName(file.name, file.type));
+  }
+
   function mediaKind(item) {
-    if (item.kind === "video" || String(item.type).startsWith("video/")) return "video";
-    return "image";
+    if (["image", "video", "file"].includes(item.kind)) return item.kind;
+    return fileKindForName(item.name, item.type) || "file";
   }
 
   function mediaKindLabel(item) {
-    return mediaKind(item) === "video" ? "视频" : "图片";
+    const kind = mediaKind(item);
+    if (kind === "video") return "视频";
+    if (kind === "file") return "文件";
+    return "图片";
   }
 
   function formatFileSize(bytes) {
@@ -11334,86 +12039,114 @@ F = 3n - 2PL - PH
     return new Intl.DateTimeFormat("zh-CN", { month: "2-digit", day: "2-digit" }).format(date).replace(/\//g, ".");
   }
 
-  function clearGalleryUrls() {
-    mediaState.galleryUrls.forEach((url) => URL.revokeObjectURL(url));
-    mediaState.galleryUrls = [];
+  function clearCardUrls() {
+    mediaState.cardUrls.forEach((url) => URL.revokeObjectURL(url));
+    mediaState.cardUrls = [];
   }
 
-  function renderMediaGallery() {
-    const grid = $("#mediaGrid");
-    const empty = $("#mediaEmpty");
-    const count = $("#mediaCount");
-    if (!grid || !empty) return;
+  function mediaDisplayUrl(item) {
+    if (item.url) return item.url;
+    const url = URL.createObjectURL(item.blob);
+    mediaState.cardUrls.push(url);
+    return url;
+  }
 
-    clearGalleryUrls();
-    const filtered =
-      mediaState.filter === "all"
-        ? mediaState.items
-        : mediaState.items.filter((item) => mediaKind(item) === mediaState.filter);
+  function projectMediaItems(projectId) {
+    return mediaState.items.filter((item) => item.projectId === projectId);
+  }
 
-    grid.innerHTML = filtered
-      .map((item) => {
-        const url = URL.createObjectURL(item.blob);
-        mediaState.galleryUrls.push(url);
-        const kind = mediaKind(item);
-        const title = item.caption || item.name || "项目影像";
-        const preview =
-          kind === "video"
-            ? `<video src="${url}#t=0.1" muted playsinline preload="metadata" aria-hidden="true"></video>
-               <span class="media-play" aria-hidden="true"><svg class="icon"><use href="#icon-video"></use></svg></span>`
-            : `<img src="${url}" alt="${escapeHTML(title)}" loading="lazy">`;
+  function mediaThumbMarkup(item) {
+    const url = mediaDisplayUrl(item);
+    const kind = mediaKind(item);
+    const title = item.caption || item.name || "科创档案";
+    const ext = extensionOf(item.name).toUpperCase() || "FILE";
+    let preview = "";
 
-        return `
-          <button class="media-card" type="button" data-media-open="${escapeHTML(item.id)}" aria-label="查看${mediaKindLabel(item)}：${escapeHTML(title)}">
-            <span class="media-thumb">
-              ${preview}
-              <span class="media-kind"><svg class="icon" aria-hidden="true"><use href="#icon-${kind}"></use></svg>${mediaKindLabel(item)}</span>
-              <span class="media-open-icon" aria-hidden="true"><svg class="icon"><use href="#icon-expand"></use></svg></span>
-            </span>
-            <span class="media-card-body">
-              <span class="media-card-title">${escapeHTML(title)}</span>
-              <span class="media-card-meta">${escapeHTML(item.projectName || "班级项目")} · ${escapeHTML(formatMediaDate(item.createdAt))}</span>
-            </span>
-          </button>
-        `;
-      })
-      .join("");
-
-    grid.hidden = filtered.length === 0;
-    empty.hidden = filtered.length > 0;
-
-    const emptyTitle = $(".media-empty-copy h4", empty);
-    const emptyCopy = $(".media-empty-copy p", empty);
-    if (mediaState.items.length === 0) {
-      if (emptyTitle) emptyTitle.textContent = "还没有项目影像";
-      if (emptyCopy) emptyCopy.textContent = "上传第一张照片或一段短视频，记录项目从图纸到实物的过程。";
-    } else if (filtered.length === 0) {
-      if (emptyTitle) emptyTitle.textContent = "这个分类还没有影像";
-      if (emptyCopy) emptyCopy.textContent = "切换到其他分类，或者继续上传新的项目记录。";
+    if (kind === "video") {
+      preview = `<video src="${url}#t=0.1" muted playsinline preload="metadata" aria-hidden="true"></video>
+        <span class="media-play" aria-hidden="true"><svg class="icon"><use href="#icon-video"></use></svg></span>`;
+    } else if (kind === "image") {
+      preview = `<img src="${url}" alt="${escapeHTML(title)}" loading="lazy">`;
+    } else {
+      preview = `<span class="media-file-tile"><span>${escapeHTML(ext)}</span><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg></span>`;
     }
 
-    if (count) count.textContent = `${mediaState.items.length} 份影像`;
-    $$("#mediaFilters button").forEach((button) => {
-      const active = button.dataset.mediaFilter === mediaState.filter;
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-pressed", String(active));
-    });
+    return `
+      <button class="project-media-item" type="button" data-media-open="${escapeHTML(item.id)}" title="${escapeHTML(title)}" aria-label="查看${mediaKindLabel(item)}：${escapeHTML(title)}">
+        <span class="media-thumb media-thumb--compact${kind === "file" ? " media-thumb--file" : ""}">
+          ${preview}
+          <span class="media-kind"><svg class="icon" aria-hidden="true"><use href="#icon-${kind === "file" ? "file" : kind}"></use></svg>${mediaKindLabel(item)}</span>
+        </span>
+      </button>
+    `;
+  }
+
+  function projectMediaPanel(project) {
+    const items = projectMediaItems(project.id);
+    const visible = items.slice(0, 4);
+    const rest = Math.max(0, items.length - visible.length);
+
+    return `
+      <div class="project-media-panel">
+        <div class="project-media-head">
+          <span class="project-media-title">
+            <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+            项目档案 <small>${items.length}</small>
+          </span>
+          <button class="project-media-upload" type="button" data-media-upload-project="${escapeHTML(project.id)}">
+            <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+            上传
+          </button>
+        </div>
+        ${
+          visible.length
+            ? `<div class="project-media-strip">${visible.map(mediaThumbMarkup).join("")}
+                 ${rest ? `<button class="project-media-more" type="button" data-project-id="${escapeHTML(project.id)}">+${rest}</button>` : ""}
+               </div>`
+            : `<p class="project-media-empty">暂无图片、视频或文件</p>`
+        }
+      </div>
+    `;
+  }
+
+  function projectDetailMediaSection(project) {
+    const items = projectMediaItems(project.id);
+    return `
+      <section class="modal-section modal-project-archive">
+        <h3>项目档案</h3>
+        ${
+          items.length
+            ? `<div class="modal-project-media-grid">${items.map(mediaThumbMarkup).join("")}</div>`
+            : `<p>这个项目还没有上传档案。可以上传现场照片、演示视频、设计文件或结题材料。</p>`
+        }
+        <button class="project-media-upload project-media-upload--wide" type="button" data-media-upload-project="${escapeHTML(project.id)}">
+          <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+          上传项目档案
+        </button>
+      </section>
+    `;
   }
 
   async function loadMediaGallery() {
     try {
-      const items = await readStoredMedia();
-      mediaState.items = items.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+      if (sharedState.mode) {
+        const response = await fetch("/api/media", {
+          headers: { Accept: "application/json" },
+          cache: "no-store"
+        });
+        if (!response.ok) throw new Error("无法读取共享档案");
+        mediaState.items = (await response.json()).sort((a, b) =>
+          String(b.createdAt).localeCompare(String(a.createdAt))
+        );
+      } else {
+        mediaState.items = (await readStoredMedia()).sort((a, b) =>
+          String(b.createdAt).localeCompare(String(a.createdAt))
+        );
+      }
     } catch (error) {
       mediaState.items = [];
     }
-    renderMediaGallery();
-  }
-
-  function validMediaFile(file) {
-    if (!file) return false;
-    const type = String(file.type || "");
-    return type.startsWith("image/") || type.startsWith("video/");
+    renderProjects();
   }
 
   function addPendingMediaFiles(fileList) {
@@ -11434,7 +12167,7 @@ F = 3n - 2PL - PH
       if (!duplicate) pendingMediaFiles.push(file);
     });
 
-    if (rejected) showToast("已跳过不支持的文件，请上传图片或视频");
+    if (rejected) showToast("已跳过不支持的文件类型");
     if (tooLarge) showToast("有文件超过 200MB，已跳过");
     renderPendingMediaFiles();
   }
@@ -11445,62 +12178,73 @@ F = 3n - 2PL - PH
 
     list.hidden = pendingMediaFiles.length === 0;
     list.innerHTML = pendingMediaFiles
-      .map(
-        (file, index) => `
+      .map((file, index) => {
+        const kind = fileKindForName(file.name, file.type) || "file";
+        return `
           <div class="media-file-row">
-            <svg class="icon" aria-hidden="true"><use href="#icon-${validMediaFile(file) && file.type.startsWith("video/") ? "video" : "image"}"></use></svg>
+            <svg class="icon" aria-hidden="true"><use href="#icon-${kind === "file" ? "file" : kind}"></use></svg>
             <span>${escapeHTML(file.name)}</span>
             <small>${formatFileSize(file.size)}</small>
             <button class="media-file-remove" type="button" data-media-remove="${index}" aria-label="移除 ${escapeHTML(file.name)}">×</button>
           </div>
-        `
-      )
+        `;
+      })
       .join("");
   }
 
-  function openMediaUploader() {
+  function openMediaUploader(projectId = null) {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = () => openMediaUploader(projectId);
+      openSharedLogin();
+      return;
+    }
+
     pendingMediaFiles = [];
+    const selectedProject = DATA.projects.find((project) => project.id === projectId) || DATA.projects[0];
     const projectOptions = DATA.projects
-      .map((project) => `<option value="${escapeHTML(project.id)}">${escapeHTML(project.title)}</option>`)
+      .map(
+        (project) =>
+          `<option value="${escapeHTML(project.id)}"${project.id === selectedProject?.id ? " selected" : ""}>${escapeHTML(project.title)}</option>`
+      )
       .join("");
 
     openModal(`
       <div class="media-upload-modal">
         <div class="media-upload-head">
-          <p class="modal-kicker">项目影像 · 本地上传</p>
-          <h2 id="modalTitle">上传图片或视频</h2>
-          <p>支持一次选择多个文件。可以关联到具体项目，也可以作为班级项目花絮保存。</p>
+          <p class="modal-kicker">科创档案 · 上传资料</p>
+          <h2 id="modalTitle">上传图片、视频或文件</h2>
+          <p>可以上传现场照片、演示视频、PDF、PPT、Word、Excel 或 ZIP 压缩包。</p>
         </div>
         <div class="media-uploader-body">
-          <div class="media-dropzone" id="mediaDropzone" role="button" tabindex="0" aria-label="选择图片或视频文件">
+          <div class="media-dropzone" id="mediaDropzone" role="button" tabindex="0" aria-label="选择图片、视频或文件">
             <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
-            <strong>拖入图片或视频</strong>
+            <strong>拖入图片、视频或文件</strong>
             <span>或点击选择文件，支持多选</span>
-            <input type="file" id="mediaFileInput" accept="image/*,video/*" multiple hidden>
+            <input type="file" id="mediaFileInput" accept="image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.md,.zip,.rar,.7z" multiple hidden>
           </div>
           <div class="media-file-list" id="mediaFileList" hidden></div>
           <div class="media-form-grid">
             <div class="editor-field">
               <label for="mediaProject">关联项目</label>
-              <select id="mediaProject"><option value="">不关联具体项目</option>${projectOptions}</select>
+              <select id="mediaProject">${projectOptions}</select>
             </div>
             <div class="editor-field">
-              <label for="mediaCaption">影像说明</label>
+              <label for="mediaCaption">档案说明</label>
               <input id="mediaCaption" type="text" placeholder="例如：第一次联调成功">
             </div>
           </div>
           <p class="media-upload-note">
             <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
-            文件只保存在当前浏览器，不会自动同步给其他同学；单个文件建议不超过 200MB。
+            ${sharedState.mode ? "文件会保存到班级服务器，所有同学都能查看；单个文件建议不超过 200MB。" : "文件只保存在当前浏览器，不会自动同步给其他同学；单个文件建议不超过 200MB。"}
           </p>
         </div>
         <div class="modal-footer">
-          <p class="modal-footer-note">保存后可在项目影像馆中查看、播放或删除。</p>
+          <p class="modal-footer-note">保存后可在对应项目的「项目档案」中查看、下载或删除。</p>
           <div class="editor-foot-actions">
             <button class="editor-btn" type="button" data-close-modal>取消</button>
             <button class="editor-btn editor-btn--primary" id="mediaSubmitBtn" type="button">
               <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
-              保存影像
+              保存档案
             </button>
           </div>
         </div>
@@ -11511,6 +12255,7 @@ F = 3n - 2PL - PH
     const input = $("#mediaFileInput");
     const projectSelect = $("#mediaProject");
     const captionInput = $("#mediaCaption");
+    const submit = $("#mediaSubmitBtn");
 
     if (zone && input) {
       zone.addEventListener("click", () => input.click());
@@ -11552,51 +12297,66 @@ F = 3n - 2PL - PH
       });
     }
 
-    const submit = $("#mediaSubmitBtn");
     if (submit) {
       submit.addEventListener("click", async () => {
         if (pendingMediaFiles.length === 0) {
-          showToast("请先选择图片或视频");
+          showToast("请先选择图片、视频或文件");
           return;
         }
 
-        const project = DATA.projects.find((item) => item.id === projectSelect?.value);
+        const project = DATA.projects.find((item) => item.id === projectSelect?.value) || selectedProject;
         const baseCaption = captionInput?.value.trim() || "";
         const files = [...pendingMediaFiles];
         submit.disabled = true;
         submit.textContent = "正在保存…";
 
         try {
-          for (let index = 0; index < files.length; index += 1) {
-            const file = files[index];
-            const fallbackName = file.name.replace(/\.[^.]+$/, "");
-            const caption = baseCaption
-              ? files.length > 1
-                ? `${baseCaption} ${index + 1}`
-                : baseCaption
-              : fallbackName;
-            const record = {
-              id: `media-${Date.now()}-${index}-${Math.random().toString(36).slice(2, 8)}`,
-              name: file.name,
-              caption,
-              type: file.type,
-              kind: file.type.startsWith("video/") ? "video" : "image",
-              size: file.size,
-              projectId: project?.id || "",
-              projectName: project?.title || "班级项目",
-              createdAt: new Date().toISOString(),
-              blob: file
-            };
-            await saveStoredMedia(record);
+          if (sharedState.mode) {
+            const formData = new FormData();
+            files.forEach((file) => formData.append("files", file, file.name));
+            formData.append("caption", baseCaption);
+            formData.append("projectId", project?.id || "");
+            formData.append("projectName", project?.title || "科创项目");
+
+            const response = await fetch("/api/media", { method: "POST", body: formData });
+            const payload = await response.json().catch(() => ({}));
+            if (response.status === 401) {
+              sharedState.authenticated = false;
+              throw new Error("登录已过期，请重新登录");
+            }
+            if (!response.ok) throw new Error(payload.error || "上传失败");
+          } else {
+            for (let index = 0; index < files.length; index += 1) {
+              const file = files[index];
+              const kind = fileKindForName(file.name, file.type) || "file";
+              const fallbackName = file.name.replace(/\.[^.]+$/, "");
+              const caption = baseCaption
+                ? files.length > 1
+                  ? `${baseCaption} ${index + 1}`
+                  : baseCaption
+                : fallbackName;
+              await saveStoredMedia({
+                id: `media-${Date.now()}-${index}-${Math.random().toString(36).slice(2, 8)}`,
+                name: file.name,
+                caption,
+                type: file.type,
+                kind,
+                size: file.size,
+                projectId: project?.id || "",
+                projectName: project?.title || "科创项目",
+                createdAt: new Date().toISOString(),
+                blob: file
+              });
+            }
           }
 
           closeModal();
           await loadMediaGallery();
-          showToast(`已保存 ${files.length} 份项目影像`);
+          showToast(sharedState.mode ? `已上传 ${files.length} 份共享档案` : `已保存 ${files.length} 份项目档案`);
         } catch (error) {
-          showToast("保存失败：浏览器存储空间可能不足");
+          showToast(error.message || "保存失败：浏览器存储空间可能不足");
           submit.disabled = false;
-          submit.textContent = "保存影像";
+          submit.textContent = "保存档案";
         }
       });
     }
@@ -11607,79 +12367,103 @@ F = 3n - 2PL - PH
     if (!item) return;
 
     if (mediaState.viewerUrl) URL.revokeObjectURL(mediaState.viewerUrl);
-    const url = URL.createObjectURL(item.blob);
-    mediaState.viewerUrl = url;
-    const isVideo = mediaKind(item) === "video";
-    const title = item.caption || item.name || "项目影像";
+    mediaState.viewerUrl = null;
+    const url = item.url || URL.createObjectURL(item.blob);
+    if (!item.url) mediaState.viewerUrl = url;
+    const kind = mediaKind(item);
+    const title = item.caption || item.name || "科创档案";
+    const ext = extensionOf(item.name).toUpperCase() || "FILE";
+
+    let stage = "";
+    if (kind === "video") {
+      stage = `<video src="${url}" controls playsinline preload="metadata" aria-label="${escapeHTML(title)}"></video>`;
+    } else if (kind === "image") {
+      stage = `<img src="${url}" alt="${escapeHTML(title)}">`;
+    } else {
+      stage = `
+        <div class="media-file-viewer">
+          <div class="media-file-badge"><span>${escapeHTML(ext)}</span><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg></div>
+          <h3>${escapeHTML(item.name)}</h3>
+          <p>文件档案 · ${formatFileSize(item.size)}</p>
+          <a class="button button--outline" href="${url}" download="${escapeHTML(item.name)}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>
+            打开 / 下载文件
+          </a>
+        </div>
+      `;
+    }
 
     openModal(`
       <div class="media-viewer">
-        <div class="media-viewer-stage">
-          ${
-            isVideo
-              ? `<video src="${url}" controls playsinline preload="metadata" aria-label="${escapeHTML(title)}"></video>`
-              : `<img src="${url}" alt="${escapeHTML(title)}">`
-          }
+        <div class="media-viewer-stage${kind === "file" ? " media-viewer-stage--file" : ""}">
+          ${stage}
         </div>
         <div class="media-viewer-info">
           <div class="media-viewer-copy">
-            <p class="modal-kicker">项目影像 · ${mediaKindLabel(item)}</p>
+            <p class="modal-kicker">科创档案 · ${mediaKindLabel(item)}</p>
             <h2 id="modalTitle">${escapeHTML(title)}</h2>
             <div class="media-viewer-meta">
-              <span>${escapeHTML(item.projectName || "班级项目")}</span>
+              <span>${escapeHTML(item.projectName || "科创项目")}</span>
               <span>${escapeHTML(formatMediaDate(item.createdAt))}</span>
               <span>${formatFileSize(item.size)}</span>
               <span>${escapeHTML(item.name)}</span>
             </div>
           </div>
-          <button class="media-viewer-delete" type="button" data-media-delete="${escapeHTML(item.id)}">
-            <svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg>
-            删除影像
-          </button>
+          ${!sharedState.mode || sharedState.authenticated ? `
+            <button class="media-viewer-delete" type="button" data-media-delete="${escapeHTML(item.id)}">
+              <svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg>
+              删除档案
+            </button>
+          ` : ""}
         </div>
       </div>
     `);
   }
 
   async function removeMediaItem(id) {
-    if (!window.confirm("确定删除这份项目影像吗？")) return;
+    if (!window.confirm("确定删除这份项目档案吗？")) return;
     try {
-      await deleteStoredMedia(id);
+      if (sharedState.mode) {
+        const response = await fetch(`/api/media/${encodeURIComponent(id)}`, { method: "DELETE" });
+        const payload = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          sharedState.authenticated = false;
+          throw new Error("登录已过期，请重新登录");
+        }
+        if (!response.ok) throw new Error(payload.error || "删除失败");
+      } else {
+        await deleteStoredMedia(id);
+      }
       closeModal();
       await loadMediaGallery();
-      showToast("影像已删除");
+      showToast("档案已删除");
     } catch (error) {
-      showToast("删除失败，请稍后重试");
+      showToast(error.message || "删除失败，请稍后重试");
     }
   }
 
   function initMedia() {
-    const uploadButtons = [$("#mediaUploadBtn"), $("#mediaEmptyUpload")];
-    uploadButtons.forEach((button) => {
-      if (button) button.addEventListener("click", openMediaUploader);
-    });
-
-    const filters = $("#mediaFilters");
-    if (filters) {
-      filters.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-media-filter]");
-        if (!button) return;
-        mediaState.filter = button.dataset.mediaFilter;
-        renderMediaGallery();
-      });
-    }
-
-    const mediaHub = $("#projectMedia");
-    if (mediaHub) {
-      mediaHub.addEventListener("click", (event) => {
-        const card = event.target.closest("[data-media-open]");
-        if (card) openMediaViewer(card.dataset.mediaOpen);
-      });
-    }
-
     document.addEventListener("click", (event) => {
+      const uploadButton = event.target.closest("[data-media-upload-project]");
+      if (uploadButton) {
+        event.preventDefault();
+        event.stopPropagation();
+        openMediaUploader(uploadButton.dataset.mediaUploadProject);
+        return;
+      }
+
+      const mediaButton = event.target.closest("[data-media-open]");
+      if (mediaButton) {
+        event.preventDefault();
+        event.stopPropagation();
+        openMediaViewer(mediaButton.dataset.mediaOpen);
+        return;
+      }
+
       const deleteButton = event.target.closest("[data-media-delete]");
       if (deleteButton) {
+        event.preventDefault();
+        event.stopPropagation();
         removeMediaItem(deleteButton.dataset.mediaDelete);
       }
     });
@@ -11832,7 +12616,7 @@ F = 3n - 2PL - PH
 
     openModal(`
       <div class="modal-head">
-        <p class="modal-kicker">班级大事 · ${escapeHTML(event.category)}</p>
+        <p class="modal-kicker">班级纪实 · ${escapeHTML(event.category)}</p>
         <h2 id="modalTitle">${escapeHTML(event.title)}</h2>
         <p class="modal-subtitle">${escapeHTML(event.excerpt)}</p>
         <div class="modal-event-date">
@@ -11877,7 +12661,7 @@ F = 3n - 2PL - PH
 
     openModal(`
       <div class="modal-head modal-project-head">
-        <p class="modal-kicker">项目实践 · ${escapeHTML(project.category)} · ${escapeHTML(project.year)}</p>
+        <p class="modal-kicker">科创实践 · ${escapeHTML(project.category)} · ${escapeHTML(project.year)}</p>
         <h2 id="modalTitle">${escapeHTML(project.title)}</h2>
         <p class="modal-subtitle">${escapeHTML(project.subtitle)}</p>
         <div class="project-award-banner">
@@ -11916,6 +12700,7 @@ F = 3n - 2PL - PH
               .join("")}
           </div>
         </section>
+        ${projectDetailMediaSection(project)}
         <div class="modal-tags">
           ${project.tags.map((tag) => `<span>${escapeHTML(tag)}</span>`).join("")}
         </div>
@@ -12252,6 +13037,7 @@ F = 3n - 2PL - PH
     initEditorEvents();
     initEditEntryPoints();
     initMedia();
+    initPwa();
     initStats();
     initModalEvents();
     initMobileMenu();
@@ -12259,10 +13045,25 @@ F = 3n - 2PL - PH
     initReveal();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
+  async function boot() {
+    const shared = await loadSharedContent();
+    if (shared) {
+      sharedState.mode = true;
+      applySharedContent(shared);
+    }
+
     init();
+
+    if (sharedState.mode) {
+      await checkSharedSession();
+      updateSharedUI();
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
   }
 })();
 

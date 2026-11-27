@@ -4901,8 +4901,12 @@ body.menu-open .mobile-menu {
   color: var(--green);
 }
 
+.repo-tree-folder {
+  padding-left: calc(7px + var(--tree-depth, 0) * 9px);
+}
+
 .repo-tree-file {
-  padding-left: 18px;
+  padding-left: calc(18px + var(--tree-depth, 0) * 9px);
   font-size: 9.5px;
   color: #57606a;
 }
@@ -6946,6 +6950,106 @@ body.menu-open .mobile-menu {
   }
 }
 
+/* ---------- repository file explorer ---------- */
+
+.repo-explorer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 12px 0 4px;
+  padding: 8px 10px;
+  border: 1px solid #eae7df;
+  border-radius: 7px;
+  background: #f7f5ef;
+}
+
+.repo-current-path {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  color: #57606a;
+  font-family: var(--mono);
+  font-size: 9px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.repo-current-path .icon {
+  color: #b08a45;
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+
+.repo-explorer-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.repo-mini-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid #d8d4c9;
+  border-radius: 5px;
+  background: #fff;
+  color: #3b4a43;
+  font-size: 8.5px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.repo-mini-btn .icon {
+  font-size: 10px;
+  color: #7d8b83;
+}
+
+.repo-mini-btn:hover {
+  border-color: #9daaa2;
+  background: #f3f7f2;
+}
+
+.repo-mini-btn--primary {
+  border-color: #2f5e53;
+  background: #2f5e53;
+  color: #fff;
+}
+
+.repo-mini-btn--primary .icon {
+  color: #e2b45b;
+}
+
+.repo-mini-btn--primary:hover {
+  background: #254c42;
+}
+
+.repo-folder-modal {
+  padding: 3px 2px;
+}
+
+.repo-folder-location {
+  margin: 8px 0 15px;
+  color: #6d776f;
+  font-size: 10px;
+}
+
+.repo-folder-location strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.repo-folder-tip {
+  margin-top: 8px;
+  color: #8a948d;
+  font-size: 8.5px;
+  line-height: 1.6;
+}
+
 /* ---------- uploaded document view inside repo ---------- */
 
 a.doc-action-btn {
@@ -8337,6 +8441,10 @@ a.doc-action-btn {
       <path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h5l2 2h8A1.5 1.5 0 0 1 21 9.5v7a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16.5v-9Z" fill="currentColor" opacity=".18"/>
       <path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h5l2 2h8A1.5 1.5 0 0 1 21 9.5v7a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16.5v-9Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="icon-cloud" viewBox="0 0 24 24">
+      <path d="M7 18h10a4 4 0 0 0 .8-7.9A6 6 0 0 0 6.2 8.4 4.8 4.8 0 0 0 7 18Z" fill="currentColor" opacity=".14"/>
+      <path d="M7 18h10a4 4 0 0 0 .8-7.9A6 6 0 0 0 6.2 8.4 4.8 4.8 0 0 0 7 18Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
     <symbol id="icon-file" viewBox="0 0 24 24">
       <path d="M6 3.5h7l5 5v12H6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M13 3.5v5h5M9 13h6M9 16.5h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -8606,9 +8714,13 @@ a.doc-action-btn {
                   <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
                   <span>共建指南</span>
                 </button>
+                <button class="repo-btn" type="button" data-repo-new-folder>
+                  <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+                  <span>新建目录</span>
+                </button>
                 <button class="repo-btn repo-btn--upload" type="button" data-upload-doc>
                   <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
-                  <span>上传资料</span>
+                  <span>上传文件</span>
                 </button>
                 <button class="repo-btn" id="repoDownloadBtn" type="button">
                   <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>
@@ -8633,7 +8745,7 @@ a.doc-action-btn {
               <svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg>
               文档库
             </button>
-            <span class="repo-tab-note">Markdown + 同学上传 · 可下载 · 支持站内编辑</span>
+            <span class="repo-tab-note">文件资源管理器 · 可新建目录 · 上传任意文件</span>
           </div>
           <div class="repo-body">
             <aside class="repo-sidebar" aria-label="课程目录">
@@ -8649,31 +8761,12 @@ a.doc-action-btn {
               <nav class="repo-tree" id="repoTree"></nav>
               <p class="repo-sidebar-note">
                 <svg class="icon" aria-hidden="true"><use href="#icon-pencil"></use></svg>
-                Markdown 可编辑，上传文件可查看下载
+                目录可新建，文件可上传、查看和下载
               </p>
             </aside>
             <div class="repo-content" id="repoContent" aria-live="polite"></div>
           </div>
         </div>
-
-        <section class="cloud-library" id="cloudLibrary" data-reveal hidden>
-          <div class="cloud-library-head">
-            <div>
-              <p class="cloud-library-eyebrow">TSINGHUA CLOUD · CLASS ARCHIVE</p>
-              <h3>云盘资料库</h3>
-              <p>从班级共享云盘整理的课程文件，按课程归档。文件仍保存在原云盘，打开后会进入云盘预览或下载页。</p>
-            </div>
-            <a class="cloud-source-link" id="cloudSourceLink" href="#" target="_blank" rel="noopener">
-              打开原云盘
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
-            </a>
-          </div>
-          <div class="cloud-library-meta">
-            <span id="cloudFileCount">0 份文件</span>
-            <span id="cloudSyncTime"></span>
-          </div>
-          <div class="cloud-library-body" id="cloudLibraryBody"></div>
-        </section>
 
         <p class="section-note" data-reveal>
           <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
@@ -10521,6 +10614,8 @@ window.CLASS_SITE_DATA.cloudResources = {
     memberView: "grid",
     repoView: "root",
     repoCourse: "",
+    repoPath: "",
+    repoFolders: [],
     repoDocId: "",
     repoQuery: "",
     repoRaw: false
@@ -11558,10 +11653,20 @@ window.CLASS_SITE_DATA.cloudResources = {
 
   /* ---------- study repository ---------- */
 
+  function normalizeRepoPath(value) {
+    return String(value || "")
+      .replace(/\\/g, "/")
+      .split("/")
+      .map((part) => part.trim())
+      .filter((part) => part && part !== ".")
+      .join("/");
+  }
+
   function uploadedRepoDocs() {
     return documentMediaItems().map((item) => ({
       id: `uploaded-${item.id}`,
-      course: mediaTargetName(item) || "同学上传",
+      folder: normalizeRepoPath(item.targetId || item.targetName || ""),
+      course: normalizeRepoPath(item.targetId || item.targetName || ""),
       file: item.name,
       title: item.caption || item.name.replace(/\.[^.]+$/, ""),
       author: item.contributor || "班级同学",
@@ -11578,8 +11683,110 @@ window.CLASS_SITE_DATA.cloudResources = {
     }));
   }
 
+  function cloudRepoDocs() {
+    const data = DATA.cloudResources;
+    if (!data || !Array.isArray(data.categories)) return [];
+    const docs = [];
+    data.categories.forEach((category) => {
+      (category.groups || []).forEach((group) => {
+        const folder = normalizeRepoPath([category.name, group.name].filter(Boolean).join("/"));
+        (group.files || []).forEach((file) => {
+          docs.push({
+            id: `cloud-${docs.length}`,
+            folder,
+            course: folder,
+            file: file.name,
+            title: file.name.replace(/\.[^.]+$/, ""),
+            author: "班级云盘",
+            date: data.syncedAt || "",
+            type: `${extensionOf(file.name).toUpperCase() || "FILE"} · 云盘`,
+            tags: ["云盘"],
+            summary: "来自班级清华云盘",
+            markdown: "",
+            cloud: true,
+            url: file.url,
+            sizeText: file.size || ""
+          });
+        });
+      });
+    });
+    return docs;
+  }
+
   function allRepoDocs() {
-    return [...DATA.resources, ...uploadedRepoDocs()];
+    return [...DATA.resources, ...uploadedRepoDocs(), ...cloudRepoDocs()];
+  }
+
+  function buildRepoFS() {
+    const root = { type: "folder", name: DATA.studyRepo.name || "im52-study-hub", path: "", children: [] };
+    const folders = new Map([["", root]]);
+
+    function ensureFolder(path) {
+      const normalized = normalizeRepoPath(path);
+      if (!normalized) return root;
+      let current = root;
+      let currentPath = "";
+      normalized.split("/").forEach((part) => {
+        currentPath = currentPath ? `${currentPath}/${part}` : part;
+        let next = current.children.find((child) => child.type === "folder" && child.name === part);
+        if (!next) {
+          next = { type: "folder", name: part, path: currentPath, children: [] };
+          current.children.push(next);
+          folders.set(currentPath, next);
+        }
+        current = next;
+      });
+      return current;
+    }
+
+    allRepoDocs().forEach((doc) => {
+      const folder = ensureFolder(doc.folder || doc.course || "");
+      folder.children.push({ type: "file", name: doc.file, path: `${folder.path}/${doc.file}`.replace(/^\//, ""), doc });
+    });
+
+    (state.repoFolders || []).forEach((folder) => ensureFolder(folder.path || folder));
+
+    function sortFolder(folder) {
+      folder.children.sort((a, b) => {
+        if (a.type !== b.type) return a.type === "folder" ? -1 : 1;
+        if (a.type === "folder") return a.name.localeCompare(b.name, "zh-CN");
+        return String(b.doc.date || "").localeCompare(String(a.doc.date || "")) || a.name.localeCompare(b.name, "zh-CN");
+      });
+      folder.children.filter((child) => child.type === "folder").forEach(sortFolder);
+    }
+    sortFolder(root);
+    return root;
+  }
+
+  function findRepoFolder(path) {
+    const normalized = normalizeRepoPath(path);
+    if (!normalized) return buildRepoFS();
+    const parts = normalized.split("/");
+    let current = buildRepoFS();
+    for (const part of parts) {
+      current = current.children.find((child) => child.type === "folder" && child.name === part);
+      if (!current) return null;
+    }
+    return current;
+  }
+
+  function repoChildren(path) {
+    const folder = findRepoFolder(path);
+    return folder ? folder.children : [];
+  }
+
+  function repoFolderCount() {
+    let count = 0;
+    function walk(folder) {
+      folder.children.forEach((child) => {
+        if (child.type === "folder") {
+          count += 1;
+          walk(child);
+        }
+      });
+    }
+    walk(buildRepoFS());
+    return count;
   }
 
   function repoCourses() {
@@ -11615,6 +11822,7 @@ window.CLASS_SITE_DATA.cloudResources = {
   }
 
   function repoDocSize(doc) {
+    if (doc.cloud) return doc.sizeText || "云盘文件";
     if (doc.uploaded) return formatFileSize(doc.size);
     const bytes = new Blob([doc.markdown || ""]).size;
     if (bytes < 1024) return `${bytes} B`;
@@ -11695,46 +11903,93 @@ window.CLASS_SITE_DATA.cloudResources = {
     `;
   }
 
-  function repoRootView() {
-    const courses = repoCourses();
-
-    const folderRows = courses
-      .map(
-        (course) => `
-        <button class="file-row is-folder" type="button" data-repo-course="${escapeHTML(course.name)}">
-          <span class="file-name-cell">
-            <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
-            <span class="file-name-text">
-              <strong>${escapeHTML(course.name)}</strong>
-              <small>${course.count} 份文档</small>
-            </span>
-          </span>
-          <span class="file-author">课程目录</span>
-          <span class="file-time">${escapeHTML(course.updated)}</span>
-        </button>
-      `
-      )
+  function repoPathBreadcrumb(path, fileName = "") {
+    const normalized = normalizeRepoPath(path);
+    const parts = normalized ? normalized.split("/") : [];
+    const trail = parts
+      .map((part, index) => {
+        const target = parts.slice(0, index + 1).join("/");
+        const isLast = index === parts.length - 1 && !fileName;
+        return `<span class="sep">/</span>${
+          isLast
+            ? `<span class="current">${escapeHTML(part)}</span>`
+            : `<button type="button" data-repo-folder="${escapeHTML(target)}">${escapeHTML(part)}</button>`
+        }`;
+      })
       .join("");
 
     return `
-      ${repoBreadcrumb()}
-      ${repoCommitBar()}
-      <div class="file-list-head"><span>名称</span><span>整理人</span><span>最近更新</span></div>
-      ${folderRows}
-      ${repoReadmePanel()}
+      <div class="repo-view-head">
+        <div class="repo-breadcrumb">
+          <button type="button" data-repo-root>${escapeHTML(DATA.studyRepo.name)}</button>
+          ${trail}
+          ${fileName ? `<span class="sep">/</span><span class="current">${escapeHTML(fileName)}</span>` : ""}
+        </div>
+        <div class="repo-view-actions">${repoBranchButton()}</div>
+      </div>
     `;
   }
 
-  function repoFolderView(course) {
-    const docs = [...course.docs];
+  function repoFolderRow(folder) {
+    const folders = folder.children.filter((child) => child.type === "folder").length;
+    const files = folder.children.filter((child) => child.type === "file").length;
+    return `
+      <button class="file-row is-folder" type="button" data-repo-folder="${escapeHTML(folder.path)}">
+        <span class="file-name-cell">
+          <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+          <span class="file-name-text">
+            <strong>${escapeHTML(folder.name)}</strong>
+            <small>${folders ? `${folders} 个目录 · ` : ""}${files} 份文件</small>
+          </span>
+        </span>
+        <span class="file-author">文件夹</span>
+        <span class="file-time"></span>
+      </button>
+    `;
+  }
+
+  function repoExplorerToolbar(path) {
+    const display = path ? `/${path}` : "/";
+    return `
+      <div class="repo-explorer-toolbar">
+        <span class="repo-current-path"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>${escapeHTML(display)}</span>
+        <div class="repo-explorer-actions">
+          <button class="repo-mini-btn" type="button" data-repo-new-folder>
+            <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>新建目录
+          </button>
+          <button class="repo-mini-btn repo-mini-btn--primary" type="button" data-upload-doc>
+            <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>上传文件
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function repoExplorerView(path = "") {
+    const folder = findRepoFolder(path) || findRepoFolder("");
+    const children = folder ? folder.children : [];
+    const folderRows = children.filter((child) => child.type === "folder").map(repoFolderRow).join("");
+    const fileRows = children.filter((child) => child.type === "file").map((child) => repoFileRow(child.doc)).join("");
+    const isRoot = !normalizeRepoPath(path);
 
     return `
-      ${repoBreadcrumb([{ label: course.name }])}
-      ${repoCommitBar()}
+      ${repoPathBreadcrumb(folder ? folder.path : "")}
+      ${isRoot ? repoCommitBar() : ""}
+      ${repoExplorerToolbar(folder ? folder.path : "")}
       <div class="file-list-head"><span>名称</span><span>整理人</span><span>最近更新</span></div>
-      ${docs.map((doc) => repoFileRow(doc)).join("")}
-      ${docs.length === 0 ? repoEmptyState("这个目录暂时没有文档", "回到全部文档看看，或者新建一份 Markdown。") : ""}
+      ${folderRows}
+      ${fileRows}
+      ${children.length === 0 ? repoEmptyState("这个目录还是空的", "可以新建目录，或上传 PDF、PPT、图片、视频等文件。") : ""}
+      ${isRoot ? repoReadmePanel() : ""}
     `;
+  }
+
+  function repoRootView() {
+    return repoExplorerView("");
+  }
+
+  function repoFolderView(path) {
+    return repoExplorerView(path);
   }
 
   function repoSearchView(query) {
@@ -11795,14 +12050,11 @@ window.CLASS_SITE_DATA.cloudResources = {
     const ext = extensionOf(doc.file).toUpperCase() || "FILE";
 
     return `
-      ${repoBreadcrumb([
-        { type: "course", label: doc.course },
-        { label: doc.file }
-      ])}
+      ${repoPathBreadcrumb(doc.folder || doc.course, doc.file)}
       <div class="doc-file-head">
         <div class="doc-file-title">
           <h2><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>${escapeHTML(doc.file)}</h2>
-          <p>${escapeHTML(doc.course)} · ${escapeHTML(ext)} · ${repoDocSize(doc)} · 上传人 ${escapeHTML(doc.author)}</p>
+          <p>${escapeHTML(doc.folder || doc.course)} · ${escapeHTML(ext)} · ${repoDocSize(doc)} · 上传人 ${escapeHTML(doc.author)}</p>
         </div>
         <div class="doc-file-actions">
           <a class="doc-action-btn" href="${url}" target="_blank" rel="noopener">
@@ -11830,7 +12082,45 @@ window.CLASS_SITE_DATA.cloudResources = {
     `;
   }
 
+  function repoCloudDocView(doc) {
+    const url = safeCloudUrl(doc.url);
+    const downloadUrl = `${url}${url.includes("?") ? "&" : "?"}dl=1`;
+    const ext = extensionOf(doc.file).toUpperCase() || "FILE";
+    return `
+      ${repoPathBreadcrumb(doc.folder || doc.course, doc.file)}
+      <div class="doc-file-head">
+        <div class="doc-file-title">
+          <h2><svg class="icon" aria-hidden="true"><use href="#icon-cloud"></use></svg>${escapeHTML(doc.file)}</h2>
+          <p>${escapeHTML(doc.folder || doc.course)} · ${escapeHTML(ext)} · ${escapeHTML(doc.sizeText || "")} · 来自班级云盘</p>
+        </div>
+        <div class="doc-file-actions">
+          <a class="doc-action-btn" href="${url}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>打开
+          </a>
+          <a class="doc-action-btn doc-action-btn--edit" href="${downloadUrl}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>下载
+          </a>
+        </div>
+      </div>
+      <div class="uploaded-file-preview">
+        <div class="uploaded-file-badge"><span>${escapeHTML(ext)}</span><svg class="icon" aria-hidden="true"><use href="#icon-cloud"></use></svg></div>
+        <h3>${escapeHTML(doc.title)}</h3>
+        <p>该文件保存在班级清华云盘，打开或下载会进入云盘页面。</p>
+        <a class="button button--outline" href="${url}" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>
+          打开云盘文件
+        </a>
+      </div>
+      <div class="doc-footer">
+        <span>来源：<strong>清华云盘</strong></span>
+        <span>整理日期：<strong>${escapeHTML(doc.date)}</strong></span>
+        <span>路径：<strong>${escapeHTML(doc.folder || doc.course)}/${escapeHTML(doc.file)}</strong></span>
+      </div>
+    `;
+  }
+
   function repoDocView(doc) {
+    if (doc.cloud) return repoCloudDocView(doc);
     if (doc.uploaded) return repoUploadedDocView(doc);
     const isRaw = state.repoRaw;
     const rawContent = `<pre class="raw-markdown">${escapeHTML(doc.markdown || "")}</pre>`;
@@ -11843,14 +12133,11 @@ window.CLASS_SITE_DATA.cloudResources = {
          </aside>`;
 
     return `
-      ${repoBreadcrumb([
-        { type: "course", label: doc.course },
-        { label: doc.file }
-      ])}
+      ${repoPathBreadcrumb(doc.folder || doc.course, doc.file)}
       <div class="doc-file-head">
         <div class="doc-file-title">
           <h2><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>${escapeHTML(doc.file)}</h2>
-          <p>${escapeHTML(doc.course)} · ${escapeHTML(doc.type)} · ${repoDocLines(doc)} 行 · ${repoDocSize(doc)}</p>
+          <p>${escapeHTML(doc.folder || doc.course)} · ${escapeHTML(doc.type)} · ${repoDocLines(doc)} 行 · ${repoDocSize(doc)}</p>
         </div>
         <div class="doc-file-actions">
           <button class="doc-action-btn${!isRaw ? " is-active" : ""}" type="button" data-doc-action="preview" data-doc-id="${escapeHTML(doc.id)}">
@@ -11896,42 +12183,50 @@ window.CLASS_SITE_DATA.cloudResources = {
     const count = $("#repoTreeCount");
     if (!tree) return;
 
-    const courses = repoCourses();
-    const rootActive = state.repoView === "root" || state.repoView === "readme";
+    const root = buildRepoFS();
+    const activePath = normalizeRepoPath(state.repoPath);
+    const rootActive = state.repoView !== "doc" && !activePath;
 
     let html = `
       <button class="repo-tree-item${rootActive ? " is-active" : ""}" type="button" data-repo-root>
         <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
-        <span>全部文档</span>
+        <span>全部文件</span>
         <small>${allRepoDocs().length}</small>
       </button>
     `;
 
-    courses.forEach((course) => {
-      const courseActive =
-        state.repoCourse === course.name && (state.repoView === "folder" || state.repoView === "doc");
-      html += `
-        <button class="repo-tree-item${courseActive ? " is-active" : ""}" type="button" data-repo-course="${escapeHTML(course.name)}">
-          <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
-          <span>${escapeHTML(course.name)}</span>
-          <small>${course.count}</small>
-        </button>
-      `;
-
-      if (courseActive) {
-        course.docs.forEach((doc) => {
+    function walk(folder, depth) {
+      folder.children
+        .filter((child) => child.type === "folder")
+        .forEach((child) => {
+          const active = state.repoView === "folder" && activePath === child.path;
+          const fileCount = child.children.filter((item) => item.type === "file").length;
           html += `
-            <button class="repo-tree-item repo-tree-file${state.repoDocId === doc.id && state.repoView === "doc" ? " is-active" : ""}" type="button" data-repo-doc="${escapeHTML(doc.id)}">
-              <svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>
-              <span>${escapeHTML(doc.file.replace(/\.md$/, ""))}</span>
+            <button class="repo-tree-item repo-tree-folder${active ? " is-active" : ""}" style="--tree-depth:${depth}" type="button" data-repo-folder="${escapeHTML(child.path)}">
+              <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+              <span>${escapeHTML(child.name)}</span>
+              <small>${fileCount}</small>
             </button>
           `;
+          if (active) {
+            child.children
+              .filter((item) => item.type === "file")
+              .forEach((item) => {
+                html += `
+                  <button class="repo-tree-item repo-tree-file${state.repoDocId === item.doc.id && state.repoView === "doc" ? " is-active" : ""}" style="--tree-depth:${depth + 1}" type="button" data-repo-doc="${escapeHTML(item.doc.id)}">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>
+                    <span>${escapeHTML(item.doc.file.replace(/\.md$/, ""))}</span>
+                  </button>
+                `;
+              });
+          }
+          walk(child, depth + 1);
         });
-      }
-    });
+    }
+    walk(root, 1);
 
     tree.innerHTML = html;
-    if (count) count.textContent = `${courses.length} 个课程`;
+    if (count) count.textContent = `${repoFolderCount()} 个目录`;
   }
 
   function renderRepo() {
@@ -11947,8 +12242,8 @@ window.CLASS_SITE_DATA.cloudResources = {
       const doc = findRepoDoc(state.repoDocId);
       content.innerHTML = doc ? repoDocView(doc) : repoRootView();
     } else if (state.repoView === "folder") {
-      const course = repoCourses().find((item) => item.name === state.repoCourse);
-      content.innerHTML = course ? repoFolderView(course) : repoRootView();
+      const folder = findRepoFolder(state.repoPath);
+      content.innerHTML = folder ? repoFolderView(folder.path) : repoRootView();
     } else if (state.repoView === "readme") {
       content.innerHTML = repoReadmeView();
     } else {
@@ -11993,7 +12288,7 @@ window.CLASS_SITE_DATA.cloudResources = {
 
     if (docCount) docCount.textContent = String(docs.length);
     if (contributorCount) contributorCount.textContent = String(contributors.size);
-    if (treeCount) treeCount.textContent = `${repoCourses().length} 个课程`;
+    if (treeCount) treeCount.textContent = `${repoFolderCount()} 个目录`;
     if (updatedMeta) {
       updatedMeta.innerHTML = `<svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>最近更新于 ${escapeHTML(repoLatestDate())}`;
     }
@@ -12025,7 +12320,13 @@ window.CLASS_SITE_DATA.cloudResources = {
   }
 
   function downloadRepoIndex() {
-    const courses = repoCourses();
+    const docs = allRepoDocs();
+    const folders = new Map();
+    docs.forEach((doc) => {
+      const folder = normalizeRepoPath(doc.folder || doc.course || "");
+      if (!folders.has(folder)) folders.set(folder, []);
+      folders.get(folder).push(doc);
+    });
     const lines = [
       `# ${DATA.studyRepo.name}`,
       "",
@@ -12033,18 +12334,22 @@ window.CLASS_SITE_DATA.cloudResources = {
       "",
       `- 仓库：${DATA.studyRepo.owner}/${DATA.studyRepo.name}`,
       `- 分支：${DATA.studyRepo.branch}`,
-      `- 文档数：${DATA.resources.length}`,
+      `- 文件数：${docs.length}`,
+      `- 目录数：${repoFolderCount()}`,
       `- 汇总于：${repoLatestDate()}`,
       ""
     ];
 
-    courses.forEach((course) => {
-      lines.push(`## ${course.name}`);
-      course.docs.forEach((doc) => {
-        lines.push(`- [${doc.file}](${encodeURI(doc.file)}) — ${doc.title} · ${doc.author} · ${doc.date}`);
+    [...folders.entries()]
+      .sort(([a], [b]) => a.localeCompare(b, "zh-CN"))
+      .forEach(([folder, files]) => {
+        lines.push(`## /${folder || "根目录"}`);
+        files.forEach((doc) => {
+          const source = doc.cloud ? "（云盘）" : doc.uploaded ? "（同学上传）" : "";
+          lines.push(`- ${doc.file} — ${doc.title} · ${doc.author} · ${doc.date}${source}`);
+        });
+        lines.push("");
       });
-      lines.push("");
-    });
 
     downloadText(`${DATA.studyRepo.name}-index.md`, lines.join("\n"));
     showToast("文档索引已开始下载");
@@ -12198,6 +12503,277 @@ window.CLASS_SITE_DATA.cloudResources = {
     return html;
   }
 
+  async function loadRepoFolders() {
+    try {
+      if (sharedState.mode) {
+        const response = await fetch("/api/folders", { headers: { Accept: "application/json" }, cache: "no-store" });
+        if (!response.ok) throw new Error("folders unavailable");
+        const payload = await response.json();
+        state.repoFolders = Array.isArray(payload.folders) ? payload.folders : [];
+      } else {
+        const saved = JSON.parse(localStorage.getItem("im52-repo-folders") || "[]");
+        state.repoFolders = Array.isArray(saved) ? saved : [];
+      }
+    } catch (error) {
+      state.repoFolders = [];
+    }
+    renderRepo();
+  }
+
+  function saveLocalRepoFolders() {
+    localStorage.setItem("im52-repo-folders", JSON.stringify(state.repoFolders));
+  }
+
+  function openNewRepoFolder() {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = openNewRepoFolder;
+      openSharedLogin();
+      return;
+    }
+
+    const parent = normalizeRepoPath(state.repoPath);
+    openModal(`
+      <div class="repo-folder-modal">
+        <p class="modal-kicker">im52-study-hub · 新建目录</p>
+        <h2 id="modalTitle">新建文件夹</h2>
+        <p class="repo-folder-location">当前位置：<strong>/${escapeHTML(parent)}</strong></p>
+        <div class="editor-field">
+          <label for="repoFolderName">目录名称</label>
+          <input id="repoFolderName" type="text" maxlength="60" placeholder="例如：期末复习、课程笔记">
+        </div>
+        <p class="repo-folder-tip">目录会创建在当前位置下，可以继续上传文件。</p>
+        <div class="modal-footer">
+          <p class="modal-footer-note">新建后所有同学都能在共享版中看到。</p>
+          <div class="editor-foot-actions">
+            <button class="editor-btn" type="button" data-close-modal>取消</button>
+            <button class="editor-btn editor-btn--primary" id="repoFolderSubmit" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+              创建目录
+            </button>
+          </div>
+        </div>
+      </div>
+    `);
+
+    const input = $("#repoFolderName");
+    const submit = $("#repoFolderSubmit");
+    if (input) input.focus();
+    if (!submit) return;
+
+    submit.addEventListener("click", async () => {
+      const name = input?.value.trim() || "";
+      if (!name) {
+        showToast("请输入目录名称");
+        input?.focus();
+        return;
+      }
+      if (name.includes("/") || name.includes("\\") || name === "." || name === "..") {
+        showToast("目录名称不能包含斜杠");
+        return;
+      }
+
+      const path = normalizeRepoPath(parent ? `${parent}/${name}` : name);
+      submit.disabled = true;
+      submit.textContent = "正在创建…";
+
+      try {
+        if (sharedState.mode) {
+          const response = await fetch("/api/folders", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path })
+          });
+          const payload = await response.json().catch(() => ({}));
+          if (response.status === 401) {
+            sharedState.authenticated = false;
+            throw new Error("登录已过期，请重新登录");
+          }
+          if (!response.ok) throw new Error(payload.error || "创建目录失败");
+          state.repoFolders.push(payload.folder || { path });
+        } else {
+          state.repoFolders.push({ path, createdAt: new Date().toISOString() });
+          saveLocalRepoFolders();
+        }
+
+        closeModal();
+        state.repoView = "folder";
+        state.repoPath = path;
+        state.repoDocId = "";
+        state.repoQuery = "";
+        setRepoSearch("");
+        renderRepo();
+        showToast("目录已创建");
+      } catch (error) {
+        showToast(error.message || "创建目录失败");
+        submit.disabled = false;
+        submit.textContent = "创建目录";
+      }
+    });
+  }
+
+  function openRepoUploader(folderPath = "") {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = () => openRepoUploader(folderPath);
+      openSharedLogin();
+      return;
+    }
+
+    pendingMediaFiles = [];
+    const path = normalizeRepoPath(folderPath);
+    openModal(`
+      <div class="media-upload-modal">
+        <div class="media-upload-head">
+          <p class="modal-kicker">im52-study-hub · 上传文件</p>
+          <h2 id="modalTitle">上传到 /${escapeHTML(path)}</h2>
+          <p>支持 PDF、PPT、Word、Excel、图片、视频、TXT、Markdown、ZIP 等文件，单个文件建议不超过 200MB。</p>
+        </div>
+        <div class="media-uploader-body">
+          <div class="media-dropzone" id="mediaDropzone" role="button" tabindex="0" aria-label="选择文件">
+            <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+            <strong>拖入文件</strong>
+            <span>或点击选择文件，支持多选</span>
+            <input type="file" id="mediaFileInput" accept="image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.md,.zip,.rar,.7z" multiple hidden>
+          </div>
+          <div class="media-file-list" id="mediaFileList" hidden></div>
+          <div class="media-form-grid">
+            <div class="editor-field">
+              <label for="repoUploadContributor">上传人</label>
+              <input id="repoUploadContributor" type="text" placeholder="填写你的名字（可选）">
+            </div>
+            <div class="editor-field">
+              <label for="repoUploadDescription">文件说明</label>
+              <input id="repoUploadDescription" type="text" placeholder="例如：期末复习提纲（可选）">
+            </div>
+          </div>
+          <p class="media-upload-note">
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+            ${sharedState.mode ? "文件会保存到班级服务器，并出现在当前目录中。" : "当前为静态版，文件只保存在当前浏览器。"}
+          </p>
+        </div>
+        <div class="modal-footer">
+          <p class="modal-footer-note">保存位置：<strong>/${escapeHTML(path)}</strong></p>
+          <div class="editor-foot-actions">
+            <button class="editor-btn" type="button" data-close-modal>取消</button>
+            <button class="editor-btn editor-btn--primary" id="repoUploadSubmit" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+              上传文件
+            </button>
+          </div>
+        </div>
+      </div>
+    `);
+
+    const zone = $("#mediaDropzone");
+    const input = $("#mediaFileInput");
+    const submit = $("#repoUploadSubmit");
+
+    if (zone && input) {
+      zone.addEventListener("click", () => input.click());
+      zone.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          input.click();
+        }
+      });
+      input.addEventListener("change", () => {
+        addPendingMediaFiles(input.files, "project");
+        input.value = "";
+      });
+      ["dragenter", "dragover"].forEach((eventName) => {
+        zone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          zone.classList.add("is-dragging");
+        });
+      });
+      ["dragleave", "drop"].forEach((eventName) => {
+        zone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          zone.classList.remove("is-dragging");
+        });
+      });
+      zone.addEventListener("drop", (event) => addPendingMediaFiles(event.dataTransfer.files, "project"));
+    }
+
+    const fileList = $("#mediaFileList");
+    if (fileList) {
+      fileList.addEventListener("click", (event) => {
+        const remove = event.target.closest("[data-media-remove]");
+        if (!remove) return;
+        pendingMediaFiles.splice(Number(remove.dataset.mediaRemove), 1);
+        renderPendingMediaFiles();
+      });
+    }
+
+    if (submit) {
+      submit.addEventListener("click", async () => {
+        if (pendingMediaFiles.length === 0) {
+          showToast("请先选择文件");
+          return;
+        }
+
+        const files = [...pendingMediaFiles];
+        const contributor = $("#repoUploadContributor")?.value.trim() || "";
+        const description = $("#repoUploadDescription")?.value.trim() || "";
+        submit.disabled = true;
+        submit.textContent = "正在上传…";
+
+        try {
+          if (sharedState.mode) {
+            const formData = new FormData();
+            files.forEach((file) => formData.append("files", file, file.name));
+            formData.append("section", "document");
+            formData.append("targetId", path);
+            formData.append("targetName", path || DATA.studyRepo.name);
+            formData.append("caption", "");
+            formData.append("contributor", contributor);
+            formData.append("description", description);
+
+            const response = await fetch("/api/media", { method: "POST", body: formData });
+            const payload = await response.json().catch(() => ({}));
+            if (response.status === 401) {
+              sharedState.authenticated = false;
+              throw new Error("登录已过期，请重新登录");
+            }
+            if (!response.ok) throw new Error(payload.error || "上传失败");
+          } else {
+            for (let index = 0; index < files.length; index += 1) {
+              const file = files[index];
+              await saveStoredMedia({
+                id: `repo-${Date.now()}-${index}-${Math.random().toString(36).slice(2, 8)}`,
+                name: file.name,
+                caption: file.name.replace(/\.[^.]+$/, ""),
+                type: file.type,
+                kind: fileKindForName(file.name, file.type) || "file",
+                size: file.size,
+                section: "document",
+                targetId: path,
+                targetName: path || DATA.studyRepo.name,
+                contributor,
+                description,
+                createdAt: new Date().toISOString(),
+                blob: file
+              });
+            }
+          }
+
+          closeModal();
+          state.repoView = "folder";
+          state.repoPath = path;
+          state.repoDocId = "";
+          state.repoQuery = "";
+          setRepoSearch("");
+          await loadMediaGallery();
+          renderRepo();
+          showToast(`已上传 ${files.length} 个文件到 /${path}`);
+        } catch (error) {
+          showToast(error.message || "上传失败，请稍后重试");
+          submit.disabled = false;
+          submit.textContent = "上传文件";
+        }
+      });
+    }
+  }
+
   function initRepoControls() {
     const shell = $("#repoShell");
     const search = $("#repoSearch");
@@ -12218,7 +12794,7 @@ window.CLASS_SITE_DATA.cloudResources = {
           if (!doc) return;
           state.repoView = "doc";
           state.repoDocId = doc.id;
-          state.repoCourse = doc.course;
+          state.repoPath = doc.folder || doc.course || "";
           state.repoRaw = false;
           state.repoQuery = "";
           setRepoSearch("");
@@ -12226,10 +12802,10 @@ window.CLASS_SITE_DATA.cloudResources = {
           return;
         }
 
-        const courseButton = event.target.closest("[data-repo-course]");
-        if (courseButton) {
+        const folderButton = event.target.closest("[data-repo-folder]");
+        if (folderButton) {
           state.repoView = "folder";
-          state.repoCourse = courseButton.dataset.repoCourse;
+          state.repoPath = folderButton.dataset.repoFolder;
           state.repoDocId = "";
           state.repoRaw = false;
           state.repoQuery = "";
@@ -12238,9 +12814,14 @@ window.CLASS_SITE_DATA.cloudResources = {
           return;
         }
 
+        if (event.target.closest("[data-repo-new-folder]")) {
+          openNewRepoFolder();
+          return;
+        }
+
         if (event.target.closest("[data-repo-root]")) {
-          state.repoView = "root";
-          state.repoCourse = "";
+          state.repoView = "folder";
+          state.repoPath = "";
           state.repoDocId = "";
           state.repoRaw = false;
           state.repoQuery = "";
@@ -12282,6 +12863,7 @@ window.CLASS_SITE_DATA.cloudResources = {
     if (guideButton) {
       guideButton.addEventListener("click", () => {
         state.repoView = "readme";
+        state.repoPath = "";
         state.repoCourse = "";
         state.repoDocId = "";
         state.repoRaw = false;
@@ -12297,7 +12879,9 @@ window.CLASS_SITE_DATA.cloudResources = {
     const repoEditButton = $("#repoEditBtn");
     if (repoEditButton) {
       repoEditButton.addEventListener("click", () => {
-        openEditor("resources", state.repoDocId || DATA.resources[0]?.id);
+        const current = findRepoDoc(state.repoDocId);
+        const editable = current && !current.uploaded && !current.cloud ? current.id : DATA.resources[0]?.id;
+        openEditor("resources", editable);
       });
     }
   }
@@ -12734,6 +13318,7 @@ window.CLASS_SITE_DATA.cloudResources = {
     if (editorState.type === "resources") {
       state.repoView = "doc";
       state.repoDocId = current.data.id;
+      state.repoPath = current.data.folder || current.data.course || "";
       state.repoCourse = current.data.course;
       state.repoRaw = false;
       state.repoQuery = "";
@@ -13936,7 +14521,7 @@ window.CLASS_SITE_DATA.cloudResources = {
 
       if (event.target.closest("[data-upload-doc]")) {
         event.preventDefault();
-        openArchiveUploader("document");
+        openRepoUploader(state.repoPath);
         return;
       }
 
@@ -14531,7 +15116,7 @@ window.CLASS_SITE_DATA.cloudResources = {
     initEditorEvents();
     initEditEntryPoints();
     initMedia();
-    renderCloudLibrary();
+    loadRepoFolders();
     initPwa();
     initStats();
     initModalEvents();

@@ -6946,6 +6946,438 @@ body.menu-open .mobile-menu {
   }
 }
 
+/* ---------- learning document contributions ---------- */
+
+.repo-btn--upload {
+  border-color: #2f5e53;
+  background: #eef3ec;
+  color: #244c41;
+}
+
+.repo-btn--upload .icon {
+  color: #2f5e53;
+}
+
+.repo-btn--upload:hover {
+  border-color: var(--ink);
+  background: #e3ece2;
+}
+
+.uploaded-docs {
+  margin-top: 24px;
+  padding: 21px 22px 18px;
+  border: 1px solid var(--line-soft);
+  border-radius: 15px;
+  background: #faf7ef;
+}
+
+.uploaded-docs-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.uploaded-docs-eyebrow {
+  color: var(--gold-deep);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.uploaded-docs-head h3 {
+  margin-top: 4px;
+  font-family: var(--display);
+  font-size: 25px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.uploaded-docs-head p:last-child {
+  max-width: 660px;
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 10.5px;
+  line-height: 1.75;
+}
+
+.uploaded-docs-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.uploaded-docs-actions > span {
+  color: var(--ink-muted);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.uploaded-docs-upload,
+.event-media-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 9.5px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s var(--ease);
+}
+
+.uploaded-docs-upload .icon,
+.event-media-upload .icon {
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.uploaded-docs-upload:hover,
+.event-media-upload:hover {
+  background: var(--green-light);
+  transform: translateY(-1px);
+}
+
+.uploaded-doc-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploaded-doc-row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 90px 100px 36px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 5px;
+  border: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.uploaded-doc-row:last-child {
+  border-bottom: 0;
+}
+
+.uploaded-doc-row:hover {
+  background: rgba(23, 58, 49, 0.045);
+}
+
+.uploaded-doc-ext {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 36px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  background: #eee5d4;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.uploaded-doc-main {
+  min-width: 0;
+}
+
+.uploaded-doc-main strong {
+  display: block;
+  overflow: hidden;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.uploaded-doc-main small {
+  display: block;
+  overflow: hidden;
+  margin-top: 1px;
+  color: var(--ink-muted);
+  font-size: 8px;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.uploaded-doc-by,
+.uploaded-doc-meta {
+  overflow: hidden;
+  color: var(--ink-muted);
+  font-size: 8.5px;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.uploaded-doc-meta {
+  text-align: right;
+}
+
+.uploaded-doc-action {
+  color: var(--gold-deep);
+  font-size: 8.5px;
+  text-align: right;
+}
+
+.uploaded-doc-action::after {
+  content: " ↗";
+}
+
+.uploaded-doc-empty,
+.event-media-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 4px 8px;
+  color: var(--ink-muted);
+  font-size: 9.5px;
+  line-height: 1.7;
+}
+
+.uploaded-doc-empty .icon,
+.event-media-empty .icon {
+  font-size: 15px;
+  color: var(--gold-deep);
+  flex: 0 0 auto;
+}
+
+/* ---------- class documentary media ---------- */
+
+.event-media-hub {
+  margin-top: 34px;
+  padding: 23px 24px 20px;
+  border: 1px solid var(--line-light);
+  border-radius: 17px;
+  background: rgba(246, 241, 231, 0.055);
+}
+
+.event-media-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 26px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.event-media-eyebrow {
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.event-media-head h3 {
+  margin-top: 4px;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.event-media-head p:last-child {
+  max-width: 680px;
+  margin-top: 4px;
+  color: rgba(246, 241, 231, 0.58);
+  font-size: 10.5px;
+  line-height: 1.8;
+}
+
+.event-media-actions {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: 0 0 auto;
+}
+
+.event-media-actions > span {
+  color: rgba(246, 241, 231, 0.42);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.event-media-upload {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink-deep);
+}
+
+.event-media-upload .icon {
+  color: var(--ink-deep);
+}
+
+.event-media-upload:hover {
+  border-color: #efca7d;
+  background: #efca7d;
+}
+
+.event-media-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 14px;
+}
+
+.event-media-card {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-light);
+  border-radius: 10px;
+  background: rgba(246, 241, 231, 0.05);
+  color: var(--paper);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease), border-color 0.25s ease, background 0.25s ease;
+}
+
+.event-media-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(226, 180, 91, 0.5);
+  background: rgba(246, 241, 231, 0.09);
+}
+
+.event-media-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0f3029;
+}
+
+.event-media-thumb img,
+.event-media-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-media-info {
+  display: block;
+  padding: 8px 9px 9px;
+}
+
+.event-media-info strong {
+  display: block;
+  overflow: hidden;
+  color: rgba(246, 241, 231, 0.9);
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.event-media-info small {
+  display: block;
+  overflow: hidden;
+  margin-top: 2px;
+  color: rgba(246, 241, 231, 0.38);
+  font-size: 7.5px;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.event-media-empty {
+  justify-content: center;
+  padding: 28px 10px 7px;
+  color: rgba(246, 241, 231, 0.42);
+  text-align: center;
+}
+
+.event-media-empty .icon {
+  color: var(--gold);
+}
+
+@media (max-width: 1100px) {
+  .event-media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .uploaded-docs {
+    margin-top: 18px;
+    padding: 17px 15px 14px;
+  }
+
+  .uploaded-docs-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .uploaded-docs-head h3 {
+    font-size: 22px;
+  }
+
+  .uploaded-docs-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .uploaded-doc-row {
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 9px 2px;
+  }
+
+  .uploaded-doc-by,
+  .uploaded-doc-meta {
+    display: none;
+  }
+
+  .uploaded-doc-action {
+    font-size: 8px;
+  }
+
+  .event-media-hub {
+    margin-top: 23px;
+    padding: 18px 15px 15px;
+  }
+
+  .event-media-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .event-media-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .event-media-head h3 {
+    font-size: 24px;
+  }
+
+  .event-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+}
+
+@media (max-width: 380px) {
+  .event-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1020px) {
@@ -7808,6 +8240,10 @@ body.menu-open .mobile-menu {
                   <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
                   <span>共建指南</span>
                 </button>
+                <button class="repo-btn repo-btn--upload" type="button" data-upload-doc>
+                  <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+                  <span>上传资料</span>
+                </button>
                 <button class="repo-btn" id="repoDownloadBtn" type="button">
                   <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>
                   <span>下载索引</span>
@@ -7854,9 +8290,31 @@ body.menu-open .mobile-menu {
           </div>
         </div>
 
+        <section class="uploaded-docs" id="docUploads" data-reveal>
+          <div class="uploaded-docs-head">
+            <div>
+              <p class="uploaded-docs-eyebrow">CLASS CONTRIBUTIONS</p>
+              <h3>同学上传的资料</h3>
+              <p>把自己找到的 PDF、PPT、Word、笔记或复习资料放进来，其他同学可以直接查看和下载。</p>
+            </div>
+            <div class="uploaded-docs-actions">
+              <span id="docUploadCount">0 份资料</span>
+              <button class="uploaded-docs-upload" type="button" data-upload-doc>
+                <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+                上传资料
+              </button>
+            </div>
+          </div>
+          <div class="uploaded-doc-list" id="docUploadList"></div>
+          <div class="uploaded-doc-empty" id="docUploadEmpty">
+            <svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg>
+            <p>还没有同学上传资料，成为第一个贡献者吧。</p>
+          </div>
+        </section>
+
         <p class="section-note" data-reveal>
           <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
-          文档由本班同学整理与维护，仅供班级内部学习交流使用；站内编辑保存在当前浏览器。
+          文档由本班同学整理与维护，仅供班级内部学习交流使用。
         </p>
       </div>
     </section>
@@ -7891,6 +8349,28 @@ body.menu-open .mobile-menu {
           <h3>这一段还没有记录</h3>
           <p>换个分类看看，故事可能藏在另一天里。</p>
         </div>
+
+        <section class="event-media-hub" id="eventMediaHub" data-reveal>
+          <div class="event-media-head">
+            <div>
+              <p class="event-media-eyebrow">CLASS FILM / PHOTOS</p>
+              <h3>纪实影像</h3>
+              <p>运动会的冲刺、团建的傍晚、班会上的笑声。上传图片或视频，让文字之外的记忆也留下来。</p>
+            </div>
+            <div class="event-media-actions">
+              <span id="eventMediaCount">0 段影像</span>
+              <button class="event-media-upload" type="button" data-upload-event>
+                <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+                上传影像
+              </button>
+            </div>
+          </div>
+          <div class="event-media-grid" id="eventMediaGrid"></div>
+          <div class="event-media-empty" id="eventMediaEmpty">
+            <svg class="icon" aria-hidden="true"><use href="#icon-video"></use></svg>
+            <p>还没有纪实影像。上传一张照片或一段视频，记录班级的共同记忆。</p>
+          </div>
+        </section>
 
         <div class="events-foot" data-reveal>
           <p>“我们不是在最好的时光遇见彼此，<br>而是因为遇见彼此，才有了最好的时光。”</p>
@@ -9513,6 +9993,7 @@ F = 3n - 2PL - PH
   const mediaState = {
     items: [],
     cardUrls: [],
+    eventUrls: [],
     viewerUrl: null,
     dbPromise: null
   };
@@ -12051,8 +12532,30 @@ F = 3n - 2PL - PH
     return url;
   }
 
+  function mediaSection(item) {
+    return item.section || (item.projectId ? "project" : "document");
+  }
+
+  function mediaTargetId(item) {
+    return item.targetId || item.projectId || "";
+  }
+
+  function mediaTargetName(item) {
+    return item.targetName || item.projectName || "班级档案";
+  }
+
   function projectMediaItems(projectId) {
-    return mediaState.items.filter((item) => item.projectId === projectId);
+    return mediaState.items.filter(
+      (item) => mediaSection(item) === "project" && mediaTargetId(item) === projectId
+    );
+  }
+
+  function eventMediaItems() {
+    return mediaState.items.filter((item) => mediaSection(item) === "event");
+  }
+
+  function documentMediaItems() {
+    return mediaState.items.filter((item) => mediaSection(item) === "document");
   }
 
   function mediaThumbMarkup(item) {
@@ -12147,15 +12650,91 @@ F = 3n - 2PL - PH
       mediaState.items = [];
     }
     renderProjects();
+    renderEventMedia();
+    renderDocUploads();
   }
 
-  function addPendingMediaFiles(fileList) {
+  function renderEventMedia() {
+    const grid = $("#eventMediaGrid");
+    const empty = $("#eventMediaEmpty");
+    const count = $("#eventMediaCount");
+    if (!grid || !empty) return;
+
+    mediaState.eventUrls.forEach((url) => URL.revokeObjectURL(url));
+    mediaState.eventUrls = [];
+
+    const items = eventMediaItems();
+    grid.innerHTML = items
+      .map((item) => {
+        const url = item.url || URL.createObjectURL(item.blob);
+        if (!item.url) mediaState.eventUrls.push(url);
+        const kind = mediaKind(item);
+        const title = item.caption || item.name || "纪实影像";
+        const preview =
+          kind === "video"
+            ? `<video src="${url}#t=0.1" muted playsinline preload="metadata" aria-hidden="true"></video>
+               <span class="media-play" aria-hidden="true"><svg class="icon"><use href="#icon-video"></use></svg></span>`
+            : `<img src="${url}" alt="${escapeHTML(title)}" loading="lazy">`;
+
+        return `
+          <button class="event-media-card" type="button" data-media-open="${escapeHTML(item.id)}" aria-label="查看纪实影像：${escapeHTML(title)}">
+            <span class="event-media-thumb">
+              ${preview}
+              <span class="media-kind"><svg class="icon" aria-hidden="true"><use href="#icon-${kind === "video" ? "video" : "image"}"></use></svg>${kind === "video" ? "视频" : "图片"}</span>
+            </span>
+            <span class="event-media-info">
+              <strong>${escapeHTML(title)}</strong>
+              <small>${escapeHTML(mediaTargetName(item))} · ${escapeHTML(formatMediaDate(item.createdAt))}</small>
+            </span>
+          </button>
+        `;
+      })
+      .join("");
+
+    grid.hidden = items.length === 0;
+    empty.hidden = items.length > 0;
+    if (count) count.textContent = `${items.length} 段影像`;
+  }
+
+  function renderDocUploads() {
+    const list = $("#docUploadList");
+    const empty = $("#docUploadEmpty");
+    const count = $("#docUploadCount");
+    if (!list || !empty) return;
+
+    const items = documentMediaItems();
+    list.innerHTML = items
+      .map((item) => {
+        const ext = extensionOf(item.name).toUpperCase() || "FILE";
+        const title = item.caption || item.name || "学习资料";
+        return `
+          <button class="uploaded-doc-row" type="button" data-media-open="${escapeHTML(item.id)}" aria-label="查看资料：${escapeHTML(title)}">
+            <span class="uploaded-doc-ext">${escapeHTML(ext)}</span>
+            <span class="uploaded-doc-main">
+              <strong>${escapeHTML(title)}</strong>
+              <small>${escapeHTML(mediaTargetName(item))} · ${escapeHTML(item.name)}</small>
+            </span>
+            <span class="uploaded-doc-by">${escapeHTML(item.contributor || "班级同学")}</span>
+            <span class="uploaded-doc-meta">${escapeHTML(formatMediaDate(item.createdAt))} · ${formatFileSize(item.size)}</span>
+            <span class="uploaded-doc-action">查看</span>
+          </button>
+        `;
+      })
+      .join("");
+
+    list.hidden = items.length === 0;
+    empty.hidden = items.length > 0;
+    if (count) count.textContent = `${items.length} 份资料`;
+  }
+
+  function addPendingMediaFiles(fileList, section = "project") {
     const incoming = Array.from(fileList || []);
     let rejected = 0;
     let tooLarge = 0;
 
     incoming.forEach((file) => {
-      if (!validMediaFile(file)) {
+      const kind = fileKindForName(file.name, file.type);
+      if (!kind || (section === "event" && !["image", "video"].includes(kind))) {
         rejected += 1;
         return;
       }
@@ -12266,7 +12845,7 @@ F = 3n - 2PL - PH
         }
       });
       input.addEventListener("change", () => {
-        addPendingMediaFiles(input.files);
+        addPendingMediaFiles(input.files, "project");
         input.value = "";
       });
 
@@ -12283,7 +12862,7 @@ F = 3n - 2PL - PH
         });
       });
       zone.addEventListener("drop", (event) => {
-        addPendingMediaFiles(event.dataTransfer.files);
+        addPendingMediaFiles(event.dataTransfer.files, "project");
       });
     }
 
@@ -12362,6 +12941,206 @@ F = 3n - 2PL - PH
     }
   }
 
+  function openArchiveUploader(section = "event", targetId = null) {
+    if (sharedState.mode && !sharedState.authenticated) {
+      sharedState.pendingAction = () => openArchiveUploader(section, targetId);
+      openSharedLogin();
+      return;
+    }
+
+    pendingMediaFiles = [];
+    const isEvent = section === "event";
+    const isDocument = section === "document";
+
+    const targets = isEvent
+      ? DATA.events.map((event) => ({ id: event.id, label: `${event.displayDate} · ${event.title}` }))
+      : repoCourses().map((course) => ({ id: course.name, label: course.name }));
+
+    if (targets.length === 0) targets.push({ id: "综合资料", label: "综合资料" });
+    const selected = targets.find((target) => target.id === targetId) || targets[0];
+
+    const title = isEvent ? "上传纪实影像" : "上传学习资料";
+    const kicker = isEvent ? "班级纪实 · 上传影像" : "学习文档 · 上传资料";
+    const description = isEvent
+      ? "上传班级活动、比赛、团建或日常记录中的图片和视频。单个文件建议不超过 200MB。"
+      : "上传你收集或整理的 PDF、PPT、Word、图片、视频或压缩包，让全班都能查看和下载。";
+    const accept = isEvent
+      ? "image/*,video/*"
+      : "image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.md,.zip,.rar,.7z";
+
+    openModal(`
+      <div class="media-upload-modal">
+        <div class="media-upload-head">
+          <p class="modal-kicker">${kicker}</p>
+          <h2 id="modalTitle">${title}</h2>
+          <p>${description}</p>
+        </div>
+        <div class="media-uploader-body">
+          <div class="media-dropzone" id="mediaDropzone" role="button" tabindex="0" aria-label="选择文件">
+            <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+            <strong>${isEvent ? "拖入图片或视频" : "拖入资料文件"}</strong>
+            <span>或点击选择文件，支持多选</span>
+            <input type="file" id="mediaFileInput" accept="${accept}" multiple hidden>
+          </div>
+          <div class="media-file-list" id="mediaFileList" hidden></div>
+          <div class="media-form-grid">
+            <div class="editor-field">
+              <label for="archiveTarget">${isEvent ? "关联纪实" : "所属课程"}</label>
+              <select id="archiveTarget">
+                ${targets.map((target) => `<option value="${escapeHTML(target.id)}"${target.id === selected.id ? " selected" : ""}>${escapeHTML(target.label)}</option>`).join("")}
+              </select>
+            </div>
+            <div class="editor-field">
+              <label for="archiveContributor">上传人</label>
+              <input id="archiveContributor" type="text" placeholder="填写你的名字（可选）">
+            </div>
+            <div class="editor-field editor-field--full">
+              <label for="${isDocument ? "archiveTitle" : "archiveCaption"}">${isDocument ? "资料标题" : "影像说明"}</label>
+              <input id="${isDocument ? "archiveTitle" : "archiveCaption"}" type="text" placeholder="${isDocument ? "例如：机械原理期末复习提纲" : "例如：运动会接力决赛"}">
+            </div>
+            ${isDocument ? `
+              <div class="editor-field editor-field--full">
+                <label for="archiveDescription">资料简介</label>
+                <textarea id="archiveDescription" rows="2" placeholder="简单说明这份资料的内容或适用章节（可选）"></textarea>
+              </div>` : ""}
+          </div>
+          <p class="media-upload-note">
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+            ${sharedState.mode ? "上传后会保存到班级服务器，所有同学都能查看。" : "当前为静态版，上传只保存在当前浏览器；共享版会自动同步到服务器。"}
+          </p>
+        </div>
+        <div class="modal-footer">
+          <p class="modal-footer-note">${isEvent ? "图片和视频会出现在「纪实影像」中。" : "文件会出现在「同学上传的资料」中，可直接查看或下载。"}</p>
+          <div class="editor-foot-actions">
+            <button class="editor-btn" type="button" data-close-modal>取消</button>
+            <button class="editor-btn editor-btn--primary" id="archiveSubmitBtn" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+              上传
+            </button>
+          </div>
+        </div>
+      </div>
+    `);
+
+    const zone = $("#mediaDropzone");
+    const input = $("#mediaFileInput");
+    const submit = $("#archiveSubmitBtn");
+    const targetSelect = $("#archiveTarget");
+    const contributorInput = $("#archiveContributor");
+
+    if (zone && input) {
+      zone.addEventListener("click", () => input.click());
+      zone.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          input.click();
+        }
+      });
+      input.addEventListener("change", () => {
+        addPendingMediaFiles(input.files, section);
+        input.value = "";
+      });
+      ["dragenter", "dragover"].forEach((eventName) => {
+        zone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          zone.classList.add("is-dragging");
+        });
+      });
+      ["dragleave", "drop"].forEach((eventName) => {
+        zone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          zone.classList.remove("is-dragging");
+        });
+      });
+      zone.addEventListener("drop", (event) => addPendingMediaFiles(event.dataTransfer.files, section));
+    }
+
+    const fileList = $("#mediaFileList");
+    if (fileList) {
+      fileList.addEventListener("click", (event) => {
+        const remove = event.target.closest("[data-media-remove]");
+        if (!remove) return;
+        pendingMediaFiles.splice(Number(remove.dataset.mediaRemove), 1);
+        renderPendingMediaFiles();
+      });
+    }
+
+    if (submit) {
+      submit.addEventListener("click", async () => {
+        if (pendingMediaFiles.length === 0) {
+          showToast(isEvent ? "请先选择图片或视频" : "请先选择资料文件");
+          return;
+        }
+
+        const target = targets.find((item) => item.id === targetSelect?.value) || selected;
+        const contributor = contributorInput?.value.trim() || "";
+        const captionInput = isDocument ? $("#archiveTitle") : $("#archiveCaption");
+        const descriptionInput = $("#archiveDescription");
+        const caption = captionInput?.value.trim() || "";
+        const uploadDescription = descriptionInput?.value.trim() || "";
+        const files = [...pendingMediaFiles];
+
+        if (isDocument && !caption) {
+          showToast("请填写资料标题");
+          captionInput?.focus();
+          return;
+        }
+
+        submit.disabled = true;
+        submit.textContent = "正在上传…";
+
+        try {
+          if (sharedState.mode) {
+            const formData = new FormData();
+            files.forEach((file) => formData.append("files", file, file.name));
+            formData.append("section", section);
+            formData.append("targetId", target.id);
+            formData.append("targetName", target.label || target.id);
+            formData.append("caption", caption);
+            formData.append("contributor", contributor);
+            formData.append("description", uploadDescription);
+
+            const response = await fetch("/api/media", { method: "POST", body: formData });
+            const payload = await response.json().catch(() => ({}));
+            if (response.status === 401) {
+              sharedState.authenticated = false;
+              throw new Error("登录已过期，请重新登录");
+            }
+            if (!response.ok) throw new Error(payload.error || "上传失败");
+          } else {
+            for (let index = 0; index < files.length; index += 1) {
+              const file = files[index];
+              const kind = fileKindForName(file.name, file.type) || "file";
+              await saveStoredMedia({
+                id: `archive-${Date.now()}-${index}-${Math.random().toString(36).slice(2, 8)}`,
+                name: file.name,
+                caption: caption || file.name.replace(/\.[^.]+$/, ""),
+                type: file.type,
+                kind,
+                size: file.size,
+                section,
+                targetId: target.id,
+                targetName: target.label || target.id,
+                contributor,
+                description: uploadDescription,
+                createdAt: new Date().toISOString(),
+                blob: file
+              });
+            }
+          }
+
+          closeModal();
+          await loadMediaGallery();
+          showToast(isEvent ? `已上传 ${files.length} 段纪实影像` : `已上传 ${files.length} 份学习资料`);
+        } catch (error) {
+          showToast(error.message || "上传失败，请稍后重试");
+          submit.disabled = false;
+          submit.textContent = "上传";
+        }
+      });
+    }
+  }
+
   function openMediaViewer(id) {
     const item = mediaState.items.find((media) => media.id === id);
     if (!item) return;
@@ -12371,8 +13150,14 @@ F = 3n - 2PL - PH
     const url = item.url || URL.createObjectURL(item.blob);
     if (!item.url) mediaState.viewerUrl = url;
     const kind = mediaKind(item);
-    const title = item.caption || item.name || "科创档案";
+    const title = item.caption || item.name || "班级档案";
     const ext = extensionOf(item.name).toUpperCase() || "FILE";
+    const sectionLabel =
+      mediaSection(item) === "event"
+        ? "班级纪实"
+        : mediaSection(item) === "document"
+          ? "学习资料"
+          : "项目档案";
 
     let stage = "";
     if (kind === "video") {
@@ -12400,13 +13185,14 @@ F = 3n - 2PL - PH
         </div>
         <div class="media-viewer-info">
           <div class="media-viewer-copy">
-            <p class="modal-kicker">科创档案 · ${mediaKindLabel(item)}</p>
+            <p class="modal-kicker">${sectionLabel} · ${mediaKindLabel(item)}</p>
             <h2 id="modalTitle">${escapeHTML(title)}</h2>
             <div class="media-viewer-meta">
-              <span>${escapeHTML(item.projectName || "科创项目")}</span>
+              <span>${escapeHTML(mediaTargetName(item))}</span>
               <span>${escapeHTML(formatMediaDate(item.createdAt))}</span>
               <span>${formatFileSize(item.size)}</span>
               <span>${escapeHTML(item.name)}</span>
+              ${item.contributor ? `<span>上传人：${escapeHTML(item.contributor)}</span>` : ""}
             </div>
           </div>
           ${!sharedState.mode || sharedState.authenticated ? `
@@ -12449,6 +13235,18 @@ F = 3n - 2PL - PH
         event.preventDefault();
         event.stopPropagation();
         openMediaUploader(uploadButton.dataset.mediaUploadProject);
+        return;
+      }
+
+      if (event.target.closest("[data-upload-doc]")) {
+        event.preventDefault();
+        openArchiveUploader("document");
+        return;
+      }
+
+      if (event.target.closest("[data-upload-event]")) {
+        event.preventDefault();
+        openArchiveUploader("event");
         return;
       }
 

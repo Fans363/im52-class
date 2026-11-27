@@ -1,5 +1,5 @@
 ﻿/* 鏈烘绯绘櫤閫?2鐝?路 PWA Service Worker */
-const CACHE_NAME = "im52-pwa-v3";
+const CACHE_NAME = "im52-pwa-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -72,5 +72,6 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+
 
 
